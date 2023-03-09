@@ -56,7 +56,6 @@ const Button1 = styled.button`
 `;
 const SocialMedia = styled.div`
     display: flex;
-    justify-content: space-evenly;
     color: white;
     width: 50%;
     text-align: center;
@@ -68,8 +67,9 @@ const SocialMediaA = styled.a`
     width: 35px;
     border-radius: 50%;
     color: white;
-    text-align: center;
-    margin: 0 1rem;
+    text-decoration: none;
+    margin: 0 .5rem;
+    padding: auto;
     &::before{
         content: ☀;
         text-align: center;
@@ -78,13 +78,14 @@ const SocialMediaA = styled.a`
 export default function AboutMe(props: Props){
     return(
         <>
-            <AboutMeInfo style={{margin: '0 4em',}}>
-                <aside style={{flex:1}}>
+            <StaticImage style={{position: 'absolute',top:0,left: 0,width:'100%',height:'100%',opacity:'.3'}} height={500} src="../../images/hacker.jpg" alt="me" />
+            <AboutMeInfo style={{margin: '0 4em'}}>
+                <aside style={{flex:1,zIndex:'22'}}>
                     <Logo>I'm Oliver.<SpanLogo>Backend Developer</SpanLogo> </Logo>
                     <p style={{color: 'white', lineHeight: '1.7'}}>
-                        I'm a software developer based in Nairobi, Kenya. I'm
+                        I'm a Software developer based in Nairobi, Kenya. I'm
                         passionate about building software that solves real
-                        problems. I love Graphic design and Photography and have been working on my portfolio since 2016. I Can give your business a new Creative start right away!
+                        problems.
                     </p>
                     <div>
                         <Button>Hire Me</Button>
@@ -92,7 +93,7 @@ export default function AboutMe(props: Props){
                     </div>
                     <p style={{color: 'white'}}>Follow me on
                         <SocialMedia>
-                            <SocialMediaA href="https://twitter.com/OllieKem7"></SocialMediaA>
+                            <SocialMediaA href="https://twitter.com/OllieKem7">☀</SocialMediaA>
                             <SocialMediaA href="https://github.com/OliverMengich"></SocialMediaA>
                             <SocialMediaA href="https://www.linkedin.com/in/oliver-arsenal"></SocialMediaA>
                         </SocialMedia>    

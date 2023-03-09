@@ -21,6 +21,7 @@ const Header = styled.header`
     position: sticky;
     margin: 0;
     padding: 0;
+    z-index:22;
     box-sizing: border-box;
     @media screen and (min-width: 768px){
         align-items: center;
