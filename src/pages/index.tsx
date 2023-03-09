@@ -1,11 +1,11 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import Layout from "../components/layout";
-
+import AboutMe from "../components/AboutMe/AboutMe.component";
 const IndexPage: React.FC<PageProps> = () => {
     return (
         <Layout>
-            <main style={{position:'relative'}}>
+            {/* <main style={{position:'relative'}}>
                 <section>
                     <h1>Hola, Me llamo Oliver Kipkemei </h1>
                     <p>
@@ -50,7 +50,8 @@ const IndexPage: React.FC<PageProps> = () => {
                 <footer>
                     @Oliver Kipkemei 2021
                 </footer>
-            </main>
+            </main> */}
+            <AboutMe imageUrl=""/>
         </Layout>
     )
 }
