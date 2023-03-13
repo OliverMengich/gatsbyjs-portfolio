@@ -11,7 +11,7 @@ const IndexPage: React.FC<PageProps> = () => {
             </main>
         </Layout>
     )
-}
+};
 
 export default IndexPage
 

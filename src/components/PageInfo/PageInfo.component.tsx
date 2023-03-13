@@ -9,7 +9,7 @@ const PageInfo = styled.div`
     text-align: center;
     height: 30vh;
     padding: 2rem 0;
-    background-color: rgba(0, 0, 0, .75);
+    background-color: #01181d;
 `;
 const PageInfoh2 = styled.h2`
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;

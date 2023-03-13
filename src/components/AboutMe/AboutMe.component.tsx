@@ -1,6 +1,6 @@
 import { StaticImage } from 'gatsby-plugin-image';
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
 import { FaGithub } from "@react-icons/all-files/fa/FaGithub";
 import { FaLinkedin } from "@react-icons/all-files/fa/FaLinkedin";
@@ -12,10 +12,21 @@ const Logo = styled.h1`
     font-size: 2.8em;
     font-weight: 600;
 `;
+const typing = keyframes`
+    0%{width: 0;}
+    25%{width: 20vw;} 
+    50%{width: 40vw;}
+    75%{width: 20vw;}
+    100%{ width: 0;}
+`
 const SpanLogo = styled.span`
     display: block;
     color: red;
+    overflow: hidden;
+    white-space: nowrap;
+    letter-spacing: .05em;
     font-family: 'Fruktur', cursive;
+    animation: ${typing} 8s steps(30, end) infinite;
 `;
 const AboutMeInfo = styled.section`
     position: relative;
@@ -45,18 +56,8 @@ const Button = styled.button`
     cursor: pointer;
     border: none;
 `;
-const Button1 = styled.button`
-    padding: 10px 20px;
-    border-radius: 25px;
-    width: 120px;
+const Button1 = styled(Button)`
     background-color: rgb(.1, 1, 30);
-    color: white;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 15px;
-    margin-right: 10px;
-    cursor: pointer;
-    border: none;
 `;
 const SocialMedia = styled.div`
     display: flex;
@@ -66,6 +67,7 @@ const SocialMedia = styled.div`
     margin: 1rem 0;
     align-content: center;
 }`;
+
 const SocialMediaA = styled.a`
     height: 35px;
     width: 35px;
@@ -82,21 +84,28 @@ const SocialMediaA = styled.a`
     }
 }`
 export default function AboutMe(props: Props){
+    var descriptions = ['Backend Developer', 'Frontend Developer', 'Fullstack Developer', 'Web3 Developer',"DevOps Entusiast"];
+    const [description, setDescription] = React.useState<string>(descriptions[0]);
+    const animationIterationFunc = () => {
+        var index = descriptions.indexOf(description);
+        if(index === descriptions.length-1){
+            setDescription(descriptions[0]);
+            
+        }else{
+            setDescription(descriptions[index+1]);
+        }
+    }
     return(
         <>
             {/* <StaticImage style={{position: 'absolute',top:0,left: 0,width:'100%',height:'100%',opacity:'.3'}} height={500} src="../../images/hacker.jpg" alt="me" /> */}
             <AboutMeInfo style={{margin: '0 4em'}}>
                 <aside style={{flex:1,zIndex:'22'}}>
-                    <Logo>Hi,I'm Oliver.<SpanLogo>Backend Developer</SpanLogo> </Logo>
+                    <Logo>Hi,I'm Oliver.<SpanLogo onAnimationIteration={animationIterationFunc} >{description}</SpanLogo> </Logo>
                     <p style={{color: 'white', lineHeight: '1.7'}}>
                         I'm a Software developer based in Nairobi, Kenya. I'm
                         passionate about building software that solves real
                         problems.
                     </p>
-                    <div>
-                        <Button>Hire Me</Button>
-                        <Button1>My Portfolio</Button1>
-                    </div>
                     <p style={{color: 'white'}}>Follow me on
                         <SocialMedia>
                             <SocialMediaA href="https://twitter.com/OllieKem7"> <FaTwitter/> </SocialMediaA>
@@ -122,7 +131,7 @@ export default function AboutMe(props: Props){
                         passionate about building software that solves real
                         problems.
                     </p>
-                    <ul style={{listStyle: 'none', display: 'flex', flexWrap: 'wrap'}}>
+                    <ul style={{listStyle: 'none', display: 'flex', flexWrap: 'wrap', borderTop:'1px solid #ccc'}}>
                         <li style={{margin: '.5rem .2rem'}}>
                             <strong>Website: </strong>
                             <span>www.oliverkipkemei.me</span>
@@ -147,14 +156,5 @@ export default function AboutMe(props: Props){
                 </aside>
             </AboutMeInfo>
         </>
-        // <section>
-        //     <Avatar src={props.imageUrl} alt=""/>
-        //     <div>
-        //         <h1 >Hi, I'm <span>Oliver Kipkemei</span> a <h1>Backend Developer</h1></h1>
-        //         <p>
-        //             I'm a software developer and a student at Dedan kimathi university. I'm currently in my final year of study. I'm passionate about software development and I'm always looking for opportunities to learn and grow.
-        //         </p>
-        //     </div>
-        // </section>
     )
 }

@@ -1,12 +1,13 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import Layout from "../components/layout"
+import PageInfoComponent from "../components/PageInfo/PageInfo.component"
 
 const IndexPage: React.FC<PageProps> = () => {
     return (
         <Layout>
             <main>
-                <h1>Projects page</h1>
+                <PageInfoComponent title="Blogs" path="blogs"/>
             </main>
         </Layout>
     )
