@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        background-color: rgba(4, 4, 68, 1);
+        background-color: rgba(6, 31, 36, 0.95);
         width: 100%;
         height: 100%;
         background-repeat: no-repeat;
@@ -46,7 +46,7 @@ const Button = styled.button`
     padding: 10px 20px;
     border-radius: 25px;
     width: 120px;
-    background-color: rgb(1, 1, 41);
+    background-color: #007e6a;
     color: white;
     cursor: pointer;
     text-decoration: none;
@@ -56,7 +56,7 @@ const Button = styled.button`
     border: none;
 `;
 const Logo = styled.h1`
-    font-size: 4vw;
+    font-size: 3vw;
     font-weight: bold;
     color: #fff;
     font-family: 'Fruktur', cursive;
@@ -80,9 +80,11 @@ const Layout =({children}: PageData )=>{
                         <List>About</List>
                         <List>Blogs</List>
                         <List>Contact</List>
+                    </NavList>
+                    <div>
                         <Button >Hire Me</Button>
                         <button style={{fontSize: '20px',background: 'none',color: 'white',border:'none'}} > &#9728;</button>
-                    </NavList>
+                    </div>
                 </Header>
                 {children}
             </body>
