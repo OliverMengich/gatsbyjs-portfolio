@@ -33,7 +33,7 @@ function ProjectsList() {
                     update the UI in realtime. The bidder is built using
                     React, Apollo Client, GraphQL, and Node.js.
                 </p>
-                <Link href="https://github.com">Learn More &rarr; </Link>
+                <Link href="https://github.com/OliverMengich">Learn More &rarr; </Link>
             </ProjectItem>
             <ProjectItem>
                 <h1>L`Assiette Restaurant</h1>
@@ -42,7 +42,7 @@ function ProjectsList() {
                     SaSS. The website is hosted on Vercel. This is a restaurant website
                     that sells french dishes and allows users to order food online
                 </p>
-                <Link href="https://github.com">Learn More &rarr; </Link>
+                <Link href="https://lassiette.vercel.app">Learn More &rarr; </Link>
             </ProjectItem>
             <ProjectItem>
                 <h1>Resume Maker</h1>
@@ -50,7 +50,7 @@ function ProjectsList() {
                     you create a professional resume in minutes. The tool is built using
                     NodeJs and Typescript
                 </p>
-                <Link href="https://github.com">Learn More &rarr; </Link>
+                <Link href="https://github.com/OliverMengich/resume-maker">Learn More &rarr; </Link>
             </ProjectItem>
             <ProjectItem>
                 <h1>My Portfolio</h1>
@@ -58,7 +58,7 @@ function ProjectsList() {
                     My portfolio website built using GatsbyJS, Typescript, and SaSS.
                     The website is hosted on Netlify.
                 </p>
-                <Link href="https://github.com">Learn More &rarr; </Link>
+                <Link href="https://gatsbyjsportfoliomain.gatsbyjs.io/">Learn More &rarr; </Link>
             </ProjectItem>
 
         </ProjectsContainer>

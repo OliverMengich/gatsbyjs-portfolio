@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         background-color: rgba(6, 31, 36, 0.95);
         width: 100%;
+        overflow-x: hidden;
         height: 100%;
         background-repeat: no-repeat;
     }
@@ -18,18 +19,21 @@ const GlobalStyle = createGlobalStyle`
 `;
 const Header = styled.header`
     width: 100%;
-    position: sticky;
+    position: relative;
     top: 0;
     left: 0;
     margin: 0;
     padding: 0;
     z-index:22;
     box-sizing: border-box;
-    background-color: rgba(6, 31, 36, 0.95);
-    @media screen and (min-width: 768px){
+    @media (min-width: 768px){
         align-items: center;
         display: flex;
         justify-content: space-between;
+    }
+    @media screen and (max-width: 768px){
+        background-color: #01181d;
+        padding: 10px;
     }
     
 `;
@@ -42,6 +46,14 @@ const NavList = styled.ul`
         background-color: light-blue;
     }
     float: right;
+    @media screen and (max-width: 768px){
+        z-index: 22;
+        position: absolute;
+        right: 0;
+        width: 70%;
+        background-color: #01181d;
+        display: none;
+    }
 `;
 const NavActions = styled.div`
     float: right;
@@ -73,14 +85,28 @@ const Button = styled.button`
     border: none;
 `;
 const Logo = styled.h1`
-    font-size: 3vw;
+    font-size: calc(1.5rem + 2vw);
     font-weight: bold;
     color: #fff;
     font-family: 'Fruktur', cursive;
+    display: inline-block;
 `;
 const Link = styled.a`
     text-decoration: none;
     color: white;
+`;
+const Bars = styled.button`
+    display: none;
+    cursor: pointer;
+    font-size: 20px;
+    border: 1px solid white;
+    padding: 5px 12px;
+    border-radius: 10px;
+    @media (max-width: 768px){
+        display: block;
+        float: right;
+        margin-top: 30px;
+    }
 `;
 type PageData = {
     children: React.ReactNode
@@ -115,6 +141,7 @@ const Layout =({children}: PageData )=>{
                             <button style={{fontSize: '20px',background: 'none',color: 'white',border:'none'}} > &#9728;</button>
                         </NavActions>
                     </NavList>
+                    <Bars>&#x2630;</Bars>
                 </Header>
                 {children}
             </body>

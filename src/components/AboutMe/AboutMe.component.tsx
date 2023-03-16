@@ -29,16 +29,20 @@ const SpanLogo = styled.span`
     animation: ${typing} 8s steps(30, end) infinite;
 `;
 const AboutMeInfo = styled.section`
-    position: relative;
     display: flex;
+    @media (max-width: 768px){
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;   |
+    }
+
+`;
+const AboutMeInfo1 = styled(AboutMeInfo)`
+    margin: 0 4em;
 `;
 const AboutMeImage = styled.aside`
-    flex: 1;
-    @media and screen (min-width: 768px){
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
+    min-width: 300px;
 `
 type Props = {
     imageUrl: string
@@ -98,8 +102,8 @@ export default function AboutMe(props: Props){
     return(
         <>
             {/* <StaticImage style={{position: 'absolute',top:0,left: 0,width:'100%',height:'100%',opacity:'.3'}} height={500} src="../../images/hacker.jpg" alt="me" /> */}
-            <AboutMeInfo style={{margin: '0 4em'}}>
-                <aside style={{flex:1,zIndex:'22'}}>
+            <AboutMeInfo1 >
+                <aside style={{zIndex:'22', flex: 1, maxWidth: '50vw'}}>
                     <Logo>Hi,I'm Oliver.<SpanLogo onAnimationIteration={animationIterationFunc} >{description}</SpanLogo> </Logo>
                     <p style={{color: 'white', lineHeight: '1.7'}}>
                         I'm a Software developer based in Nairobi, Kenya. I'm
@@ -115,14 +119,14 @@ export default function AboutMe(props: Props){
                         </SocialMedia>    
                     </p>
                 </aside>
-                <AboutMeImage style={{flex:1}}>
-                    <StaticImage style={{borderRadius: '50%'}} height={500} src="../../images/second_img1.png" alt="me" />
+                <AboutMeImage>
+                    <StaticImage style={{borderRadius:'50%', height:'auto', width: '100%'}} src="../../images/second_img1.png" alt="me" />
                 </AboutMeImage>
-            </AboutMeInfo>
+            </AboutMeInfo1>
             <AboutMeInfo style={{ backgroundColor: '#01181d', color:'white',padding: '1rem'}}>
-                <aside style={{flex:1}}>
-                    <StaticImage style={{borderRadius: '50%'}} height={500} src="../../images/second_img1.png" alt="me" />
-                </aside>
+                <AboutMeImage>
+                    <StaticImage style={{borderRadius: '100%', height: 'auto', width: '500px'}} src="../../images/second_img1.png" alt="me" />
+                </AboutMeImage>
                 <aside style={{flex:1}}>
                     <h4>My Biography</h4>
                     <h3>Software Developer</h3>

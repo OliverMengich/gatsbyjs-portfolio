@@ -7,8 +7,7 @@ import styled from 'styled-components';
 const PageInfo = styled.div`
     width: 100%;
     text-align: center;
-    height: 30vh;
-    padding: 2rem 0;
+    padding: 2vw 0;
     background-color: #01181d;
 `;
 const PageInfoh2 = styled.h2`
