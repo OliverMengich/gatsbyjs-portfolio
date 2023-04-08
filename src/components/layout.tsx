@@ -32,7 +32,6 @@ const Header = styled.header`
         justify-content: space-between;
     }
     @media screen and (max-width: 768px){
-        background-color: #01181d;
         padding: 10px;
     }
     
