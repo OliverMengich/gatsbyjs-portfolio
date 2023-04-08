@@ -14,7 +14,7 @@ const Logo = styled.h1`
 const typing = keyframes`
     0%{width: 0;}
     25%{width: 20vw;} 
-    50%{width: 40vw;}
+    50%{width: 50vw;}
     75%{width: 20vw;}
     100%{ width: 0;}
 `
@@ -33,9 +33,8 @@ const AboutMeInfo = styled.section`
         flex-wrap: wrap;
         flex-direction: column;
         align-items: center;
-        justify-content: center;   |
+        justify-content: center; 
     }
-
 `;
 const AboutMeInfo1 = styled(AboutMeInfo)`
     margin: 0 4em;
@@ -100,9 +99,8 @@ export default function AboutMe(props: Props){
     }
     return(
         <>
-            {/* <StaticImage style={{position: 'absolute',top:0,left: 0,width:'100%',height:'100%',opacity:'.3'}} height={500} src="../../images/hacker.jpg" alt="me" /> */}
             <AboutMeInfo1 >
-                <aside style={{zIndex:'22', flex: 1, maxWidth: '50vw'}}>
+                <aside style={{ flex: 1, maxWidth: '100vw'}}>
                     <Logo>Hi,I'm Oliver.<SpanLogo onAnimationIteration={animationIterationFunc} >{description}</SpanLogo> </Logo>
                     <p style={{color: 'white', lineHeight: '1.7'}}>
                         I'm a Software developer based in Nairobi, Kenya. I'm

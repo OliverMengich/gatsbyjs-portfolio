@@ -46,7 +46,7 @@ const NavList = styled.ul`
     }
     float: right;
     @media screen and (max-width: 768px){
-        z-index: 22;
+        z-index: 999;
         position: absolute;
         right: 0;
         width: 70%;
@@ -111,6 +111,15 @@ type PageData = {
     children: React.ReactNode
 }
 const Layout =({children}: PageData )=>{
+    const[toogle, setToogle] = React.useState<boolean>(false);
+    React.useEffect(() => {
+        const handleResize = () => {
+          setToogle(window.innerWidth <= 768);
+        };
+        // window.addEventListener("resize", handleResize);
+        handleResize();
+        return () => window.removeEventListener("resize", handleResize);
+      }, []);
     return(
         <>
             <GlobalStyle/>
@@ -119,7 +128,9 @@ const Layout =({children}: PageData )=>{
                     <Logo>
                         Oliver Kipkemei
                     </Logo>
-                    <NavList>
+                    <NavList 
+                        style={ toogle?{ display: 'none'}:{ display: 'inherit'} }
+                        >
                         <List >
                             <Link href="/">Home</Link>
                         </List>
@@ -140,7 +151,11 @@ const Layout =({children}: PageData )=>{
                             <button style={{fontSize: '20px',background: 'none',color: 'white',border:'none'}} > &#9728;</button>
                         </NavActions>
                     </NavList>
-                    <Bars>&#x2630;</Bars>
+                    <Bars 
+                        onClick={()=>{
+                            setToogle(!toogle)
+                        }}
+                        >&#x2630;</Bars>
                 </Header>
                 {children}
             </body>
