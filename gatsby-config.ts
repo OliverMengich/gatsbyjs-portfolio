@@ -2,7 +2,7 @@ import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `portfolio-oliver`,
+    title: `Oliver Kipkemei`,
     siteUrl: `https://gatsbyjsportfoliomain.gatsbyjs.io/`
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
@@ -21,14 +21,26 @@ const config: GatsbyConfig = {
       "path": "./src/images/"
     },
     __key: "images"
-  }, {
+  }, 
+  {
     resolve: 'gatsby-source-filesystem',
     options: {
       "name": "pages",
       "path": "./src/pages/"
     },
     __key: "pages"
-  },{
+  },
+  `gatsby-transformer-remark`,
+  {
+
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      "name": "pages",
+      "path": "./src/markdown-pages"
+    },
+    __key: "markdown-pages"
+  },
+  {
     resolve: 'gatsby-omni-font-loader',
     options:{
       enableListener: true,

@@ -6,18 +6,18 @@ import { FaGithub } from "@react-icons/all-files/fa/FaGithub";
 import { FaLinkedin } from "@react-icons/all-files/fa/FaLinkedin";
 import { FaEnvelope } from "@react-icons/all-files/fa/FaEnvelope";
 const Logo = styled.h1`
-    color: white;
+    
     font-family: 'Poppins', sans-serif;
     font-size: 2.8em;
     font-weight: 600;
 `;
 const typing = keyframes`
     0%{width: 0;}
-    25%{width: 20vw;} 
-    50%{width: 50vw;}
-    75%{width: 20vw;}
+    25%{width: 30vw;} 
+    50%{width: 70vw;}
+    75%{width: 30vw;}
     100%{ width: 0;}
-`
+`;
 const SpanLogo = styled.span`
     display: block;
     color: red;
@@ -39,6 +39,12 @@ const AboutMeInfo = styled.section`
 `;
 const AboutMeInfo1 = styled(AboutMeInfo)`
     margin: 0 4em;
+    @media (max-width: 768px){
+        margin: 0 2em;
+        width: 100%;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
 `;
 const AboutMeImage = styled.aside`
     min-width: 300px;
@@ -51,7 +57,6 @@ const Button = styled.button`
     border-radius: 25px;
     width: 120px;
     background-color: #007e6a;
-    color: white;
     cursor: pointer;
     text-decoration: none;
     font-size: 15px;
@@ -64,8 +69,8 @@ const Button1 = styled(Button)`
 `;
 const SocialMedia = styled.div`
     display: flex;
-    color: white;
     width: 50%;
+    color: inherit;
     text-align: center;
     margin: 1rem 0;
     align-content: center;
@@ -77,7 +82,7 @@ const SocialMediaA = styled.a`
     font-size: 1.5rem;
     margin: .5rem 0;
     border-radius: 50%;
-    color: white;
+    color: inherit;
     text-decoration: none;
     margin: 0 .5rem;
     padding: auto;
@@ -86,6 +91,15 @@ const SocialMediaA = styled.a`
         text-align: center;
     }
 }`
+const AboutMeAside = styled.aside`
+    flex: 1;
+    max-width: 50vw;
+    @media (max-width: 768px){
+        width: 100%;
+        margin: 0 .5em;
+        max-width: 100vw;
+    }
+`;
 export default function AboutMe(props: Props){
     var descriptions = ['Backend Developer', 'Frontend Developer', 'Fullstack Developer', 'Web3 Developer',"DevOps Entusiast"];
     const [description, setDescription] = React.useState<string>(descriptions[0]);
@@ -101,14 +115,14 @@ export default function AboutMe(props: Props){
     return(
         <>
             <AboutMeInfo1 >
-                <aside style={{ flex: 1, maxWidth: '50vw'}}>
+                <AboutMeAside>
                     <Logo>Hi,I'm Oliver.<SpanLogo onAnimationIteration={animationIterationFunc} >{description}</SpanLogo> </Logo>
-                    <p style={{color: 'white', lineHeight: '1.7', maxWidth:'80%'}}>
+                    <p style={{color: 'inherit', lineHeight: '1.7', maxWidth:'80%'}}>
                         I'm a Software developer based in Nairobi, Kenya. I'm
                         passionate about building software that solves real
                         problems.
                     </p>
-                    <p style={{color: 'white'}}>Follow me on
+                    <p style={{color: 'inherit'}}>Follow me on
                         <SocialMedia>
                             <SocialMediaA href="https://twitter.com/OllieKem7"> <FaTwitter/> </SocialMediaA>
                             <SocialMediaA href="https://github.com/OliverMengich"> <FaGithub/> </SocialMediaA>
@@ -116,16 +130,16 @@ export default function AboutMe(props: Props){
                             <SocialMediaA href="mailto:oliverkemei2000@gmail.com"> <FaEnvelope/> </SocialMediaA>
                         </SocialMedia>    
                     </p>
-                </aside>
+                </AboutMeAside>
                 <AboutMeImage>
                     <StaticImage style={{borderRadius:'50%', height:'auto', width: '100%'}} src="../../images/second_img1.png" alt="me" />
                 </AboutMeImage>
             </AboutMeInfo1>
-            <AboutMeInfo style={{ backgroundColor: '#01181d', color:'white',padding: '1rem'}}>
+            <AboutMeInfo style={{ backgroundColor: '#01181d', color:'inherit',padding: '1rem'}}>
                 <AboutMeImage>
                     <StaticImage style={{borderRadius: '100%', height: 'auto', width: '500px'}} src="../../images/second_img1.png" alt="me" />
                 </AboutMeImage>
-                <aside style={{flex:1}}>
+                <aside style={{flex:1, color: 'inherit'}}>
                     <h4>My Biography</h4>
                     <h3>Software Developer</h3>
                     <p >

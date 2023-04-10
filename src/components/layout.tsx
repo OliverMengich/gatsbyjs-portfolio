@@ -1,6 +1,15 @@
 import * as React from 'react';
-import styled, {createGlobalStyle} from 'styled-components';
-const GlobalStyle = createGlobalStyle`
+import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
+interface GlobalStyleProps {
+    theme: {
+        backgroundColor: string,
+        color: string,
+        aboutMeTheme: {
+            backgroundColor: string,
+        },
+    }
+}
+const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
     *{
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
@@ -8,11 +17,13 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        background-color: rgba(6, 31, 36, 0.95);
+        background-color: ${(props: GlobalStyleProps) => props.theme.backgroundColor};
+        color: ${(props: GlobalStyleProps) => props.theme.color};
         width: 100%;
         overflow-x: hidden;
         height: 100%;
         background-repeat: no-repeat;
+        transition: all 0.5s ease;
     }
     html{
     }
@@ -34,7 +45,6 @@ const Header = styled.header`
     @media screen and (max-width: 768px){
         padding: 10px;
     }
-    
 `;
 const NavList = styled.ul`
     list-style: none;
@@ -64,7 +74,6 @@ const NavActions = styled.div`
     }
 `
 const List = styled.li`
-    color: white;
     margin: 10px;
     @media screen and (max-width: 768px){
         border-bottom: 1px solid #fff;
@@ -75,7 +84,6 @@ const Button = styled.button`
     border-radius: 25px;
     width: 120px;
     background-color: #007e6a;
-    color: white;
     cursor: pointer;
     text-decoration: none;
     font-size: 15px;
@@ -83,16 +91,15 @@ const Button = styled.button`
     cursor: pointer;
     border: none;
 `;
-export const Logo = styled.h1`
+const Logo = styled.h1`
     font-size: calc(1.5rem + 2vw);
     font-weight: bold;
-    color: #fff;
     font-family: 'Fruktur', cursive;
     display: inline-block;
 `;
 const Link = styled.a`
     text-decoration: none;
-    color: white;
+    color: inherit;
 `;
 const Bars = styled.button`
     display: none;
@@ -108,7 +115,7 @@ const Bars = styled.button`
     }
 `;
 type PageData = {
-    children: React.ReactNode
+    children: React.ReactNode,
 }
 const Layout =({children}: PageData )=>{
     const[toogle, setToogle] = React.useState<boolean>(false);
@@ -120,8 +127,29 @@ const Layout =({children}: PageData )=>{
         handleResize();
         return () => window.removeEventListener("resize", handleResize);
       }, []);
+      const [theme, setTheme] = React.useState<'light' | 'dark'>('dark');
+    const lightTheme = { 
+        backgroundColor: 'white',
+        color: 'black',
+        aboutMeTheme: {
+            backgroundColor: '#f5f5f5',
+        },
+    }
+    const darkTheme = {
+        backgroundColor: 'rgba(6, 31, 36, 0.95)',
+        color: 'white',
+        aboutMeTheme: {
+            backgroundColor: '#01181d',
+        },
+    }
+    const toggleTheme = () => {
+        setTheme(theme === 'light' ? 'dark' : 'light');
+    }
     return(
-        <>
+    
+        <ThemeProvider
+            theme={theme === 'light' ? lightTheme : darkTheme}
+            >
             <GlobalStyle/>
             <body>
                 <Header>
@@ -147,8 +175,8 @@ const Layout =({children}: PageData )=>{
                             <Link href="/contact">Contact</Link>
                         </List>
                         <NavActions style={{position:'relative'}}>
-                            <Button >Hire Me</Button>
-                            <button style={{fontSize: '20px',background: 'none',color: 'white',border:'none'}} > &#9728;</button>
+                            <Button>Hire Me</Button>
+                            <button onClick={toggleTheme}style={{fontSize: '25px', cursor:'pointer', background: 'none',color: 'inherit',border:'none'}} > &#9728; </button>
                         </NavActions>
                     </NavList>
                     <Bars 
@@ -159,7 +187,7 @@ const Layout =({children}: PageData )=>{
                 </Header>
                 {children}
             </body>
-        </>
+        </ThemeProvider>
     )
 }
 export default Layout;
