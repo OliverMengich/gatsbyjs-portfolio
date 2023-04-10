@@ -83,7 +83,7 @@ const Button = styled.button`
     cursor: pointer;
     border: none;
 `;
-const Logo = styled.h1`
+export const Logo = styled.h1`
     font-size: calc(1.5rem + 2vw);
     font-weight: bold;
     color: #fff;

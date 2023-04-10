@@ -24,6 +24,7 @@ const SpanLogo = styled.span`
     overflow: hidden;
     white-space: nowrap;
     letter-spacing: .05em;
+    font-size: calc(1.5rem + 2vw);
     font-family: 'Fruktur', cursive;
     animation: ${typing} 8s steps(30, end) infinite;
 `;
@@ -100,9 +101,9 @@ export default function AboutMe(props: Props){
     return(
         <>
             <AboutMeInfo1 >
-                <aside style={{ flex: 1, maxWidth: '100vw'}}>
+                <aside style={{ flex: 1, maxWidth: '50vw'}}>
                     <Logo>Hi,I'm Oliver.<SpanLogo onAnimationIteration={animationIterationFunc} >{description}</SpanLogo> </Logo>
-                    <p style={{color: 'white', lineHeight: '1.7'}}>
+                    <p style={{color: 'white', lineHeight: '1.7', maxWidth:'80%'}}>
                         I'm a Software developer based in Nairobi, Kenya. I'm
                         passionate about building software that solves real
                         problems.
