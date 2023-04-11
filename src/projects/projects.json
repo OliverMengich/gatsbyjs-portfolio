@@ -1,0 +1,32 @@
+[
+    {
+        "title":"GraphQL Bidder",
+        "description":"A realtime bidder that uses GraphQL subscriptions to update the UI in realtime. The bidder is built usingReact, Prisma, Postgres Apollo Client, GraphQL, and NodeJS.",
+        "imageUrl":"./images/lassiette.png",
+        "url":"https://github.com/OliverMengich/ts-backend_bidder"
+    },
+    {
+        "title":"L`Assiette Restaurant",
+        "description":"A restaurant website built using NextJS, Typescript, PostgreSQL and SaSS. for french dishes and allows users to order food online",
+        "imageUrl":"./images/lassiette.png",
+        "url":"https://lassiette.vercel.app"
+    },
+    {
+        "title":"Resume Maker",
+        "description":"A free online tool to help you create a professional resume in minutes. The tool is built using NodeJs and Typescript",
+        "imageUrl":"./images/resume.png",
+        "url":"https://github.com/OliverMengich/resume-maker"
+    },
+    {
+        "title": "My Portfolio",
+        "description": "My portfolio website built using GatsbyJS, Typescript, and SaSS.The website is hosted on Netlify.",
+        "imageUrl": "./images/portfolio.png",
+        "url": "https://gatsbyjsportfoliomain.gatsbyjs.io/"
+    },
+    {
+        "title": "CareCircle",
+        "description": " A web application that allows users to create a circle of friends and family to help them in case of an emergency. The application is built using React, Typescript, and SaSS.",
+        "imageUrl": "./images/portfolio.png",
+        "url": "https://github.com/golcarecircle/care-circle"
+    }
+]
