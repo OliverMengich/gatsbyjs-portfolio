@@ -21,7 +21,9 @@ const config: GatsbyConfig = {
       "path": "./src/images/"
     },
     __key: "images"
-  }, 
+  },
+  `gatsby-transformer-remark`,
+  `gatsby-transformer-json`,
   {
     resolve: 'gatsby-source-filesystem',
     options: {
@@ -30,7 +32,15 @@ const config: GatsbyConfig = {
     },
     __key: "pages"
   },
-  `gatsby-transformer-remark`,
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      "name": "projects",
+      "path": "./src/projects/"
+    },
+    __key: "projects"
+  },
+  
   {
 
     resolve: 'gatsby-source-filesystem',
