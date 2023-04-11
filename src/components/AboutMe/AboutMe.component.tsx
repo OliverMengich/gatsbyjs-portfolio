@@ -50,7 +50,7 @@ const AboutMeImage = styled.aside`
     min-width: 300px;
 `
 type Props = {
-    imageUrl: string
+    imageUrl: string,
 }
 const Button = styled.button`
     padding: 10px 20px;

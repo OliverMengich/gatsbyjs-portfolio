@@ -1,14 +1,39 @@
 import * as React from "react"
-import type { HeadFC, PageProps } from "gatsby"
+import { HeadFC, PageProps, useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 import PageInfoComponent from "../components/PageInfo/PageInfo.component"
-import ProjectsList from "../components/Projects/Projects.component"
+import ProjectsList from "../components/Projects/Projects.component";
 const IndexPage: React.FC<PageProps> = () => {
+    const data = useStaticQuery(graphql`
+        query MyQuery {
+        allProjectsJson {
+            edges {
+                node {
+                    id
+                    title
+                    description
+                    url
+                    imageUrl {
+                        childImageSharp {
+                            fluid(maxWidth: 700) {
+                                ...GatsbyImageSharpFluid
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+    `)
+    console.log(data);
     return (
         <Layout>
             <main>
                 <PageInfoComponent title="Projects" path="projects"/>
-                <ProjectsList/>
+                <ProjectsList
+                    projects={data.allProjectsJson.edges}
+                />
             </main>
         </Layout>
     )

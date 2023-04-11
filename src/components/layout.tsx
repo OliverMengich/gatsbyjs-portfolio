@@ -185,7 +185,16 @@ const Layout =({children}: PageData )=>{
                         }}
                         >&#x2630;</Bars>
                 </Header>
-                {children}
+                {
+                // children
+                    React.Children.map(children, (child: React.ReactElement<any>) => {
+                        if (React.isValidElement(child)) {
+                            return React.cloneElement(child, { theme: theme === 'light' ? lightTheme : darkTheme });
+                        }
+                        return child;
+                    })
+                }
+
             </body>
         </ThemeProvider>
     )

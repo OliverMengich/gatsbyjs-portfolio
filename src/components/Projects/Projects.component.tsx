@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { StaticImage } from 'gatsby-plugin-image';
+import Image from 'gatsby-image';
 const ProjectsContainer = styled.section`
     width: 100%;
     padding: 2rem 0;
@@ -43,53 +43,24 @@ const LinkArrow = styled.span`
         transform: translateX(15px);
     }
 `;
-const Image = styled.img`
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 15px;
-`;
-function ProjectsList() {
+type ProjectsListProps = {
+    projects: any;
+};
+function ProjectsList({projects}: ProjectsListProps) {
     return (
         <ProjectsContainer >
-            <ProjectItem>
-                <ProjectTitle>GraphQL Bidder</ProjectTitle>  
-                <p>
-                    A realtime bidder that uses GraphQL subscriptions to
-                    update the UI in realtime. The bidder is built using
-                    React, Prisma, Postgres Apollo Client, GraphQL, and NodeJS.
-                </p>
-                <Link href="https://github.com/golcarecircle/care_circle">Learn More &rarr; </Link>
-            </ProjectItem>
-            <ProjectItem>
-                <StaticImage src="../../images/lassiette.png" alt="L`Assiette Restaurant" />
-                <ProjectTitle>L`Assiette Restaurant</ProjectTitle>
-                <p>
-                    A restaurant website built using NextJS, Typescript, PostgreSQL and
-                    SaSS. for french dishes and allows users to order food online
-                </p>
-                <Link href="https://lassiette.vercel.app">Learn More &rarr; </Link>
-            </ProjectItem>
-            <ProjectItem>
-                <StaticImage src="../../images/resume.png" alt="resume-maker" />
-                <ProjectTitle>Resume Maker</ProjectTitle>
-                <p>A free online tool to help
-                    you create a professional resume in minutes. The tool is built using
-                    NodeJs and Typescript
-                </p>
-                <Link href="https://github.com/OliverMengich/resume-maker">Learn More &rarr; </Link>
-            </ProjectItem>
-            <ProjectItem>
-                <StaticImage src="../../images/portfolio.png" alt="Oliver Kipkemei" />
-                <ProjectTitle>My Portfolio</ProjectTitle>
-                <p>
-                    My portfolio website built using GatsbyJS, Typescript, and SaSS.
-                    The website is hosted on Netlify.
-                </p>
-                <Link href="https://gatsbyjsportfoliomain.gatsbyjs.io/">Learn More 
-                    <LinkArrow>&rarr;</LinkArrow>
-                </Link>
-            </ProjectItem>
+            {
+                projects.map((edge: any) => (
+                    <ProjectItem key={edge.node.id}>
+                        <ProjectTitle>{edge.node.title}</ProjectTitle> 
+                        <Image fluid={edge.node.imageUrl.childImageSharp.fluid} alt={edge.node.title} />
+                        <p>
+                            {edge.node.description}
+                        </p>
+                        <Link href={edge.node.url}>Learn More &rarr; </Link>
+                    </ProjectItem>
+                ))
+            }
         </ProjectsContainer>
     );
 }
