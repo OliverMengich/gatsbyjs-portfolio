@@ -6,7 +6,6 @@ import { FaGithub } from "@react-icons/all-files/fa/FaGithub";
 import { FaLinkedin } from "@react-icons/all-files/fa/FaLinkedin";
 import { FaEnvelope } from "@react-icons/all-files/fa/FaEnvelope";
 const Logo = styled.h1`
-    
     font-family: 'Poppins', sans-serif;
     font-size: 2.8em;
     font-weight: 600;
