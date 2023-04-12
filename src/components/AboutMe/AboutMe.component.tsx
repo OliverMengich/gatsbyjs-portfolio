@@ -5,6 +5,10 @@ import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
 import { FaGithub } from "@react-icons/all-files/fa/FaGithub";
 import { FaLinkedin } from "@react-icons/all-files/fa/FaLinkedin";
 import { FaEnvelope } from "@react-icons/all-files/fa/FaEnvelope";
+import { FaPhone } from "@react-icons/all-files/fa/FaPhone";
+import { FaFilePdf } from "@react-icons/all-files/fa/FaFilePdf";
+import { FaWhatsapp }from "@react-icons/all-files/fa/FaWhatsapp";
+import {FaLocationArrow} from "@react-icons/all-files/fa/FaLocationArrow";
 const Logo = styled.h1`
     font-family: 'Poppins', sans-serif;
     font-size: 2.8em;
@@ -50,6 +54,13 @@ const AboutMeImage = styled.aside`
 `
 type Props = {
     imageUrl: string,
+    theme?:{
+        backgroundColor: string,
+        color: string,
+        aboutMeTheme: {
+            backgroundColor: string,
+        },
+    }
 }
 const Button = styled.button`
     padding: 10px 20px;
@@ -99,7 +110,7 @@ const AboutMeAside = styled.aside`
         max-width: 100vw;
     }
 `;
-export default function AboutMe(props: Props){
+export default function AboutMe({theme}: Props){
     var descriptions = ['Backend Developer', 'Frontend Developer', 'Fullstack Developer', 'Web3 Developer',"DevOps Entusiast"];
     const [description, setDescription] = React.useState<string>(descriptions[0]);
     const animationIterationFunc = () => {
@@ -113,7 +124,7 @@ export default function AboutMe(props: Props){
     }
     return(
         <>
-            <AboutMeInfo1 >
+            <AboutMeInfo1>
                 <AboutMeAside>
                     <Logo>Hi,I'm Oliver.<SpanLogo onAnimationIteration={animationIterationFunc} >{description}</SpanLogo> </Logo>
                     <p style={{color: 'inherit', lineHeight: '1.7', maxWidth:'80%'}}>
@@ -134,14 +145,14 @@ export default function AboutMe(props: Props){
                     <StaticImage style={{borderRadius:'50%', height:'auto', width: '100%'}} src="../../images/second_img1.png" alt="me" />
                 </AboutMeImage>
             </AboutMeInfo1>
-            <AboutMeInfo style={{ backgroundColor: '#01181d', color:'inherit',padding: '1rem'}}>
+            <AboutMeInfo style={{ backgroundColor: theme?.backgroundColor==='white'? theme.backgroundColor: '#01181d', color:'inherit',padding: '1rem'}}>
                 <AboutMeImage>
                     <StaticImage style={{borderRadius: '100%', height: 'auto', width: '500px'}} src="../../images/second_img1.png" alt="me" />
                 </AboutMeImage>
                 <aside style={{flex:1, color: 'inherit'}}>
                     <h4>My Biography</h4>
                     <h3>Software Developer</h3>
-                    <p >
+                    <p>
                         I'm a software developer based in Nairobi, Kenya. I'm
                         passionate about building software that solves real
                         problems.

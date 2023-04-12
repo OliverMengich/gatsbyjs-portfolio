@@ -45,6 +45,13 @@ const LinkArrow = styled.span`
 `;
 type ProjectsListProps = {
     projects: any;
+    theme?:{
+        backgroundColor: string,
+        color: string,
+        aboutMeTheme: {
+            backgroundColor: string,
+        },
+    }
 };
 function ProjectsList({projects}: ProjectsListProps) {
     return (

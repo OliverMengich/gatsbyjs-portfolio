@@ -2,6 +2,13 @@ import React from 'react';
 type PageInfoDetails={
     title: string
     path: string
+    theme?:{
+        backgroundColor: string,
+        color: string,
+        aboutMeTheme: {
+            backgroundColor: string,
+        },
+    }
 }
 import styled from 'styled-components';
 const PageInfo = styled.div`
@@ -29,6 +36,7 @@ const PageInfoA = styled.a`
     text-decoration: none;
 `;
 function PageInfoComponent(props:PageInfoDetails) {
+    console.log(props.theme)
     return (
         <PageInfo>
             <PageInfoh2>{props.title}</PageInfoh2>

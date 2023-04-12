@@ -115,7 +115,7 @@ const Bars = styled.button`
     }
 `;
 type PageData = {
-    children: React.ReactNode,
+    children: React.ReactNode | React.ReactElement<any, string | React.JSXElementConstructor<any>>,
 }
 const Layout =({children}: PageData )=>{
     const[toogle, setToogle] = React.useState<boolean>(false);
@@ -147,9 +147,7 @@ const Layout =({children}: PageData )=>{
     }
     return(
     
-        <ThemeProvider
-            theme={theme === 'light' ? lightTheme : darkTheme}
-            >
+        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
             <GlobalStyle/>
             <body>
                 <Header>
@@ -187,7 +185,7 @@ const Layout =({children}: PageData )=>{
                 </Header>
                 {
                 // children
-                    React.Children.map(children, (child: React.ReactElement<any>) => {
+                    React.Children.map(children, (child: React.ReactNode) => {
                         if (React.isValidElement(child)) {
                             return React.cloneElement(child, { theme: theme === 'light' ? lightTheme : darkTheme });
                         }
