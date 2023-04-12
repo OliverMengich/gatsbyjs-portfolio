@@ -40,16 +40,6 @@ const config: GatsbyConfig = {
     },
     __key: "projects"
   },
-  
-  {
-
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "pages",
-      "path": "./src/markdown-pages"
-    },
-    __key: "markdown-pages"
-  },
   {
     resolve: 'gatsby-omni-font-loader',
     options:{
