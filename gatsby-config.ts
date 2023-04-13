@@ -32,6 +32,29 @@ const config: GatsbyConfig = {
     },
     __key: "pages"
   },
+  // {
+  //   resolve: `gatsby-source-graphql`,
+  //   options:{
+  //     typeName: `Blog`,
+  //     fieldName: `blog`,
+  //     url:`https://medium2.p.rapidapi.com/`,
+  //     headers:{
+  //       "x-rapidapi-key":`b14fc5fcb1msh9aad0ec075830d6p13ca9bjsn1c3c8cc27fdb`
+  //     },
+  //     query:`
+  //       query{
+  //         allPosts{
+  //           edges{
+  //             node{
+  //               id
+  //               title
+  //             }
+  //           }
+  //         }
+  //       }
+  //     `
+  //   }
+  // },
   {
     resolve: 'gatsby-source-filesystem',
     options: {
@@ -39,6 +62,11 @@ const config: GatsbyConfig = {
       "path": "./src/projects/"
     },
     __key: "projects"
+  },{
+    resolve: 'gatsby-source-dev',
+    options:{
+      username: 'olivermengich'
+    }
   },
   {
     resolve: 'gatsby-omni-font-loader',

@@ -18,7 +18,6 @@ const IndexPage: React.FC<PageProps> = () => {
                             fluid(maxWidth: 700) {
                                 ...GatsbyImageSharpFluid
                             }
-                            
                         }
                     }
                 }

@@ -119,8 +119,8 @@ const ToogleButton = styled(Bars)`
     border-radius: none;
     font-size: 25px; 
     background: none; 
-    color: 'inherit';
-    border: 'none';
+    color: inherit;
+    border: none;
 `
 const ToogleButton1 = styled.button`
     cursor: pointer;
@@ -196,7 +196,7 @@ const Layout =({children}: PageData )=>{
                             <ToogleButton1 onClick={toggleTheme}> &#9728; </ToogleButton1>
                         </NavActions>
                     </NavList>
-                    <div>
+                    <div style={{display:'inline'}}>
                         <ToogleButton onClick={toggleTheme}> &#9728; </ToogleButton>
                         <Bars
                             onClick={()=>{
