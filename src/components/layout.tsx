@@ -114,6 +114,25 @@ const Bars = styled.button`
         margin-top: 30px;
     }
 `;
+const ToogleButton = styled(Bars)`
+    padding:0;
+    border-radius: none;
+    font-size: 25px; 
+    background: none; 
+    color: 'inherit';
+    border: 'none';
+`
+const ToogleButton1 = styled.button`
+    cursor: pointer;
+    color: inherit;
+    border: none;
+    font-size: 25px; 
+    background: none; 
+    color: inherit;
+    @media (max-width: 768px){
+        display: none;
+    }
+`;
 type PageData = {
     children: React.ReactNode | React.ReactElement<any, string | React.JSXElementConstructor<any>>,
 }
@@ -173,18 +192,20 @@ const Layout =({children}: PageData )=>{
                             <Link href="/contact">Contact</Link>
                         </List>
                         <NavActions style={{position:'relative'}}>
-                            <Button>Hire Me</Button>
-                            <button onClick={toggleTheme}style={{fontSize: '25px', cursor:'pointer', background: 'none',color: 'inherit',border:'none'}} > &#9728; </button>
+                            <Button>Explore</Button>
+                            <ToogleButton1 onClick={toggleTheme}> &#9728; </ToogleButton1>
                         </NavActions>
                     </NavList>
-                    <Bars 
-                        onClick={()=>{
-                            setToogle(!toogle)
-                        }}
-                        >&#x2630;</Bars>
+                    <div>
+                        <ToogleButton onClick={toggleTheme}> &#9728; </ToogleButton>
+                        <Bars
+                            onClick={()=>{
+                                setToogle(!toogle)
+                            }}
+                            >&#x2630;</Bars>
+                    </div>
                 </Header>
                 {
-                // children
                     React.Children.map(children, (child: React.ReactNode) => {
                         if (React.isValidElement(child)) {
                             return React.cloneElement(child, { theme: theme === 'light' ? lightTheme : darkTheme });
