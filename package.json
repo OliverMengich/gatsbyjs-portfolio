@@ -30,6 +30,8 @@
     "gatsby-source-dev": "^0.1.4",
     "gatsby-source-filesystem": "^5.7.0",
     "gatsby-source-graphql": "^5.8.0",
+    "gatsby-source-hashnode": "^3.0.3",
+    "gatsby-source-hashnode-devblog": "^0.2.0",
     "gatsby-transformer-json": "^5.8.0",
     "gatsby-transformer-remark": "^6.8.0",
     "gatsby-transformer-sharp": "^5.7.0",

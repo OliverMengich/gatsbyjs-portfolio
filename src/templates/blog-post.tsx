@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql, useStaticQuery, type HeadFC, type PageProps } from "gatsby";
+import Layout from "../components/layout";
 type Props = {
     data: {
         devArticles: {
@@ -16,28 +17,31 @@ type Props = {
     }
 }
 export default function BlogPost({ data }: Props) {
+    console.log(data);
     const { devArticles: { article } } = data;
     console.log(article);
     return (
-        <div>
-            <h1>{article.title}</h1>
-            <div dangerouslySetInnerHTML={{ __html: article.body_html }} />
-        </div>
+        <Layout>
+            <div>
+                <h1>{article.title}</h1>
+                <div dangerouslySetInnerHTML={{ __html: article.body_html }} />
+            </div>
+        </Layout>
     )
 }
 export const query = graphql`
     query ($id: String!) {
         devArticles(id: { eq: $id }){
+            id
             article {
                 id
                 title
                 url
                 body_html
-                published_at(formatString: "MMMM DD, YYYY"),
-                tag_list,
+                published_at(formatString: "MMMM DD, YYYY")
+                tag_list
                 social_image
             }
         }
     }
-
 `;

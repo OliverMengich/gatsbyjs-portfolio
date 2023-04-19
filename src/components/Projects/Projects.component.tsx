@@ -34,6 +34,16 @@ const Link = styled.a`
     text-decoration: none;
     color: white;
 `;
+type Props = {
+    imageUrl: string,
+    theme?:{
+        backgroundColor: string,
+        color: string,
+        aboutMeTheme: {
+            backgroundColor: string,
+        },
+    }
+}
 const LinkArrow = styled.span`
     margin-left: 5px;
     transition: 0.5s ease-out;
@@ -44,7 +54,7 @@ const LinkArrow = styled.span`
     }
 `;
 type ProjectsListProps = {
-    projects: any;
+    projects: any[],
     theme?:{
         backgroundColor: string,
         color: string,

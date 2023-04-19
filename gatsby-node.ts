@@ -1,14 +1,10 @@
-import {GatsbyNode, GraphQLTypegenOptions} from "gatsby";
+import type {GatsbyNode} from "gatsby";
+import path from "path";
 type DevArticle = {
-    id: string;
-    title: string;
-    url: string;
-    slug: string;
-    body_html: string;
-    published_at: string;
-    description: string;
-    tag_list: string[];
-    social_image: string;
+    article:{
+        id: string;
+        slug: string;
+    }
 };
 
 type DevArticles = {
@@ -22,41 +18,36 @@ type Res = {
     data?: DevArticles;
     error?: any;
 }
-export const createPages: GatsbyNode['createPages'] =async ({graphql, actions}) => {
+export const createPages: GatsbyNode['createPages']=async ({graphql, actions}) => {
     const {createPage} = actions;
-    const result: Res = await graphql(`
-        query{
+    const result:Res = await graphql(`
+        query allDevArticles {
             allDevArticles{
                 edges{
                     node{
                         article{
                             id
-                            title
-                            url
                             slug
-                            body_html
-                            published_at
-                            description
-                            tag_list
-                            social_image
                         }
                     }
                 }
             }
         }
     `);
+    result as Res;
     if (result.error) {
         throw result.error
     }
     if (!result.data) {
         throw new Error('No data')
     }
+    console.log(result);
     result?.data.allDevArticles.edges.forEach(({node}:{node:DevArticle}) => {
         createPage({
-            path: `/blog/${node.slug}`,
-            component: require.resolve(`./src/templates/blog-post.tsx`),
+            path: `/blogs/${node.article.slug}`,
+            component: path.resolve(`./src/templates/blog-post.tsx`),
             context: {
-                id: node.id,
+                id: node.article.id,
             }
         })
     })
