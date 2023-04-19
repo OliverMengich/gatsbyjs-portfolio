@@ -16,7 +16,11 @@ const IndexPage: React.FC<PageProps> = () => {
                     imageUrl {
                         childImageSharp {
                             fluid(maxWidth: 700) {
-                                ...GatsbyImageSharpFluid
+                                srcSet
+                                src
+                                base64
+                                aspectRatio
+                                sizes
                             }
                         }
                     }
