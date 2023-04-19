@@ -5,8 +5,6 @@ import PageInfoComponent from "../components/PageInfo/PageInfo.component"
 import Footer from "../components/Footer/Footer.component";
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { type } from "os";
 const BlogPost = styled.div`
     display: flex;
     flex-direction: column;
@@ -19,6 +17,7 @@ const BlogPost = styled.div`
         font-size: 2rem;
         font-weight: 700;
         margin: 0;
+        color: inherit;
         margin-bottom: 1rem;
     }
     p {
@@ -40,35 +39,49 @@ const BlogPost = styled.div`
         margin-bottom: 1rem;
     }
 `;
+const BlogElement = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 0;
+        color: inherit;
+        margin-bottom: 1rem;
+    }
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+`;
 type Props = {
-    node: {
-        article: {
-            id: string,
-            title: string,
-            url: string,
-            slug: string,
-            description: string,
-            published_at: string,
-            tag_list: string[],
-            cover_image: string
-        }
+    
+    article: {
+        id: string,
+        title: string,
+        url: string,
+        slug: string,
+        description: string,
+        published_at: string,
+        tag_list: string,
+        cover_image: string
     }
 }
 
 const IndexPage: React.FC<PageProps> = (data) => {
-    console.log(data);
     const graphQLData= useStaticQuery(graphql`
-        query MyQuery{
+        query MyQueryX {
             allDevArticles {
-                edges {
-                    node {
-                        article {
-                            id
-                            title
-                            description
-                            url
-                            slug
-                        }
+                nodes {
+                    article {
+                        slug
+                        id
+                        title
+                        url
+                        tag_list
+                        description
+                        published_at(formatString: "MMMM DD, YYYY"),
                     }
                 }
             }
@@ -80,26 +93,49 @@ const IndexPage: React.FC<PageProps> = (data) => {
             <main>
                 <PageInfoComponent title="Blogs" path="blogs"/>
                 <BlogPost>
-                    {graphQLData.allDevArticles.edges.map(({ node }: Props) => {
-                        const { article } = node;
+                    {graphQLData.allDevArticles.nodes.map(({article}:Props) => {
                         return (
-                            <div key={article.id}>
-                                <p>{article.published_at}</p>
-                                {
-                                    article.tag_list.map((tag: string) => {
-                                        return (
-                                            <span style={{color: 'inherit'}} key={tag}>{tag}</span>
-                                        )
-                                    })
-                                }
-                                <Link to={`/blogs/${article.slug}`}>
-                                    <h1>{article.title}</h1>
-                                </Link>
-                                <p>{article.description}</p>
-                                <Link to={`/blogs/${article.slug}`}>
-                                    Learn More
-                                </Link>
-                            </div>
+                            <BlogElement style={{ display:'flex',width:'100%',justifyContent:'space-between',borderBottom:'1px solid #ccc', }} key={article.id}>
+                                <h3>{article.published_at.toLocaleUpperCase()}</h3>
+                                <div>
+                                    {
+                                        article.tag_list.split(',').map((tag: string) => {
+                                            return (
+                                                <h4 style={{
+                                                    display: 'inline-block',
+                                                    textTransform: 'uppercase',
+                                                    padding: '0.5rem',
+                                                    fontSize: 'calc(10px + 0.5vw)',
+                                                    fontWeight: 700,
+                                                    color: '#007e6a'}} key={tag}>{tag}</h4>
+                                            )
+                                        })
+                                    }
+                                    <Link style={{margin:'0', color:'inherit'}} to={`/blogs/${article.slug}`}>
+                                        <h1
+                                            style={{
+                                                fontSize: 'calc(20px + 1vw)',
+                                                fontWeight: 700,
+                                                margin: 0,
+                                                color: 'inherit',
+                                                marginBottom: '1rem',
+                                            }}
+                                        >{article.title}</h1>
+                                    </Link>
+                                    <p>{article.description}</p>
+                                    <Link style={{
+                                        display: 'inline-block',
+                                        textTransform: 'uppercase',
+                                        padding: '0.5rem',
+                                        fontWeight: 700,
+                                        color: '#007e6a',
+                                        fontSize: '1.2rem',
+                                        textDecoration: 'none',
+                                        }} to={`/blogs/${article.slug}`}>
+                                        Learn More &rarr;
+                                    </Link>
+                                </div>
+                            </BlogElement>
                         )
                     })}
                 </BlogPost>
