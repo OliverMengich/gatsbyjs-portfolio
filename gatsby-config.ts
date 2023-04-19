@@ -67,6 +67,13 @@ const config: GatsbyConfig = {
     options:{
       username: 'olivermengich'
     }
+  },{
+    resolve: `gatsby-source-hashnode`,
+    options: {
+      username: `midfielder`,
+      // you can also provide your own API key here
+      // if you don't have one, you can get it from https://hashnode.com/settings/api
+    },
   },
   {
     resolve: 'gatsby-omni-font-loader',
