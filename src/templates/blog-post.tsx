@@ -37,7 +37,7 @@ export default function BlogPost({ data }: Props) {
                         style={{
                             color: '#ccc',
                         }}
-                    >{article.published_at.toDateString()}</h3>
+                    >{new Date(article.published_at).toDateString()}</h3>
                     <h1>{article.title}</h1>
                     <div style={{
                         width: '100%',
@@ -76,7 +76,7 @@ export const query = graphql`
                 title
                 url
                 body_html
-                published_at(formatString: "MMMM DD, YYYY")
+                published_at
                 tag_list
                 social_image
                 user {
