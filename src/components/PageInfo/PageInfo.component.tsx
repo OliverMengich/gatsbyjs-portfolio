@@ -11,6 +11,7 @@ type PageInfoDetails={
     }
 }
 import styled from 'styled-components';
+
 const PageInfo = styled.div`
     width: 100%;
     text-align: center;
@@ -22,23 +23,27 @@ const PageInfoh2 = styled.h2`
     font-size: 30px;
     line-height: 40px;
     font-weight: bold;
-    color: white;
+    color: inherit;
 `;
 const PageInfoP = styled.p`
     font-size: 1rem;
     vertical-align: middle;
     font-size: 18px;
     line-height: 1.5;
-    color: white;
+    color: inherit;
     letter-spacing: .5px;
 `;
 const PageInfoA = styled.a`
     text-decoration: none;
+    color: inherit;
 `;
 function PageInfoComponent(props:PageInfoDetails) {
-    console.log(props.theme)
     return (
-        <PageInfo>
+        <PageInfo 
+            style={{
+                backgroundColor: props.theme?.backgroundColor!=='white'?'#01181d':'#ccc',
+            }}
+        >
             <PageInfoh2>{props.title}</PageInfoh2>
             <PageInfoP><PageInfoA href='/'>Home</PageInfoA> &nbsp;&nbsp;»&nbsp;&nbsp; {props.path} </PageInfoP>
         </PageInfo>
