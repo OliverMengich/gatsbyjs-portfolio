@@ -1,5 +1,7 @@
 import * as React from 'react';
 import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
+import { BsMoon } from '@react-icons/all-files/bs/BsMoon';
+import { BsSun } from '@react-icons/all-files/bs/BsSun';
 interface GlobalStyleProps {
     theme: {
         backgroundColor: string,
@@ -59,6 +61,7 @@ const NavList = styled.ul`
         z-index: 999;
         position: absolute;
         right: 0;
+        color: inherit;
         width: 70%;
         background-color: #01181d;
         display: none;
@@ -131,6 +134,7 @@ const ToogleButton1 = styled.button`
     color: inherit;
     @media (max-width: 768px){
         display: none;
+        visibility: hidden;
     }
 `;
 type PageData = {
@@ -193,11 +197,19 @@ const Layout =({children}: PageData )=>{
                         </List>
                         <NavActions style={{position:'relative'}}>
                             <Button>Explore</Button>
-                            <ToogleButton1 onClick={toggleTheme}> &#9728; </ToogleButton1>
+                            <ToogleButton1 onClick={toggleTheme}> 
+                                {
+                                    theme === 'light' ?  <BsMoon/>:<BsSun/>
+                                }
+                            </ToogleButton1>
                         </NavActions>
                     </NavList>
                     <div style={{display:'inline'}}>
-                        <ToogleButton onClick={toggleTheme}> &#9728; </ToogleButton>
+                        <ToogleButton onClick={toggleTheme}> 
+                            {
+                                theme === 'light' ? <BsMoon/>:<BsSun/> 
+                            }
+                         </ToogleButton>
                         <Bars
                             onClick={()=>{
                                 setToogle(!toogle)

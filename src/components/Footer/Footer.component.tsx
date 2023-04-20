@@ -60,7 +60,6 @@ type Props={
     }
 }
 export default function Footer({theme}: Props){
-    console.log(theme)
     var date = new Date();
     const days =['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
     const day=days[date.getDay()]
