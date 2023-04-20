@@ -11,7 +11,7 @@ const BlogPost = styled.div`
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    max-width: 800px;
+    max-width: 850px;
     padding: 0 1rem;
     h1 {
         font-size: 2rem;
@@ -55,6 +55,12 @@ const BlogElement = styled.div`
         flex-direction: column;
     }
 `;
+const BlogContent=styled.div`
+    width: 80%;
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+`;
 type Props = {
     
     article: {
@@ -90,14 +96,18 @@ const IndexPage: React.FC<PageProps> = (data) => {
     console.log(graphQLData);
     return (
         <Layout>
-            <main>
+            {/* <main> */}
                 <PageInfoComponent title="Blogs" path="blogs"/>
                 <BlogPost>
                     {graphQLData.allDevArticles.nodes.map(({article}:Props) => {
                         return (
                             <BlogElement style={{ display:'flex',width:'100%',justifyContent:'space-between',borderBottom:'1px solid #ccc', }} key={article.id}>
-                                <h3>{article.published_at.toLocaleUpperCase()}</h3>
-                                <div>
+                                <h3 
+                                style={{
+                                    margin: "2vw 0"
+                                }}
+                                >{article.published_at.toLocaleUpperCase()}</h3>
+                                <BlogContent>
                                     {
                                         article.tag_list.split(',').map((tag: string) => {
                                             return (
@@ -131,10 +141,10 @@ const IndexPage: React.FC<PageProps> = (data) => {
                                         color: '#007e6a',
                                         fontSize: '1.2rem',
                                         textDecoration: 'none',
-                                        }} to={`/blogs/${article.slug}`}>
+                                        }} to={`${article.url}`}>
                                         Learn More &rarr;
                                     </Link>
-                                </div>
+                                </BlogContent>
                             </BlogElement>
                         )
                     })}
@@ -151,7 +161,7 @@ const IndexPage: React.FC<PageProps> = (data) => {
                     }
                 </div>
                 <Footer/>
-            </main>
+            {/* </main> */}
         </Layout>
     )
 };

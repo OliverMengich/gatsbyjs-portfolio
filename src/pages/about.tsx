@@ -86,7 +86,8 @@ const SocialMediaA = styled.a`
         text-align: center;
     }
 }`
-const ResumeButton = styled.button`
+const ResumeButton = styled.a`
+    text-decoration: none;
     background: #fff;
     color: #000;
     border: 1px solid #000;
@@ -95,6 +96,7 @@ const ResumeButton = styled.button`
     font-size: 1rem;
     font-weight: bold;
     margin: 1rem 0;
+    transition: all .2s ease-in-out;
     cursor: pointer;
     &:hover{
         background: #000;
@@ -136,7 +138,7 @@ const AboutPage: React.FC<PageProps> = () => {
                         <SocialMediaA href="mailto:oliverkemei2000@gmail.com"> <FaEnvelope/> </SocialMediaA>
                         <SocialMediaA href="https://oliverkipkemei.me"> <FaGlobeAsia/> </SocialMediaA>
                     </SocialMedia> 
-                    <ResumeButton>
+                    <ResumeButton >
                         DOWNLOAD RESUME
                     </ResumeButton>
                     <p >
