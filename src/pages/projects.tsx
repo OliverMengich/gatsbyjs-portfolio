@@ -3,6 +3,7 @@ import { HeadFC, PageProps, useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 import PageInfoComponent from "../components/PageInfo/PageInfo.component"
 import ProjectsList from "../components/Projects/Projects.component";
+import Footer from "../components/Footer/Footer.component";
 const IndexPage: React.FC<PageProps> = () => {
     const data = useStaticQuery(graphql`
         query MyQuery {
@@ -38,6 +39,7 @@ const IndexPage: React.FC<PageProps> = () => {
                     projects={data.allProjectsJson.edges}
                 />
             </main>
+            <Footer/>
         </Layout>
     )
 }

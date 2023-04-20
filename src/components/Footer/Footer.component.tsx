@@ -50,14 +50,6 @@ const SocialMediaA = styled.a`
     margin: 0 .5rem;
     padding: auto;
 `
-const NavMediaA = styled.a`
-    cursor: pointer;
-    margin: .5rem 0;
-    color: inherit;
-    text-decoration: none;
-    margin: 0 .5rem;
-    padding: auto;
-`
 type Props={
     theme?:{
         backgroundColor: string,
@@ -68,6 +60,7 @@ type Props={
     }
 }
 export default function Footer({theme}: Props){
+    console.log(theme)
     var date = new Date();
     const days =['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
     const day=days[date.getDay()]
