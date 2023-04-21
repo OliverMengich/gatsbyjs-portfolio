@@ -7,11 +7,11 @@ const ProjectsContainer = styled.section`
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    color: white;
+    color: inherit;
 `;
 const ProjectTitle = styled.h3`
     font-weight: bold;
-    color: #fff;
+    color: inherit;
     font-family: 'Fruktur', cursive;
     display: inline-block;
 `;
@@ -21,7 +21,7 @@ const ProjectItem = styled.div`
     background-color: #01181d;
     color: white;
     cursor: pointer;
-    margin: 0 1rem;
+    margin: 10px;
     font-family: 'Fruktur', cursive;
     border-radius: 15px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
@@ -63,18 +63,32 @@ type ProjectsListProps = {
         },
     }
 };
-function ProjectsList({projects}: ProjectsListProps) {
+function ProjectsList({projects, theme}: ProjectsListProps) {
     return (
         <ProjectsContainer >
             {
                 projects.map((edge: any) => (
-                    <ProjectItem key={edge.node.id}>
+                    <ProjectItem style={{
+                        backgroundColor: theme?.backgroundColor!== 'white'? '#01181d': 'white',
+                        color: theme?.color
+                        }}
+                        key={edge.node.id}>
                         <ProjectTitle>{edge.node.title}</ProjectTitle> 
                         <Image fluid={edge.node.imageUrl.childImageSharp.fluid} alt={edge.node.title} />
-                        <p>
+                        <p style={{
+                            color: theme?.color
+                        }}>
                             {edge.node.description}
                         </p>
-                        <Link href={edge.node.url}>Learn More &rarr; </Link>
+                        <Link style={{
+                                display: 'inline-block',
+                                textTransform: 'uppercase',
+                                padding: '0.5rem',
+                                fontWeight: 700,
+                                color: '#007e6a',
+                                fontSize: '1.2rem',
+                                textDecoration: 'none',
+                        }}  href={edge.node.url}>Learn More &rarr; </Link>
                     </ProjectItem>
                 ))
             }

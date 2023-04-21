@@ -16,7 +16,6 @@ const PageInfo = styled.div`
     width: 100%;
     text-align: center;
     padding: 2vw 0;
-    background-color: #01181d;
 `;
 const PageInfoh2 = styled.h2`
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
