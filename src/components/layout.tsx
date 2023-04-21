@@ -44,9 +44,7 @@ const Header = styled.header`
         display: flex;
         justify-content: space-between;
     }
-    @media screen and (max-width: 768px){
-        padding: 10px;
-    }
+    
 `;
 const NavList = styled.ul`
     list-style: none;
@@ -204,7 +202,7 @@ const Layout =({children}: PageData )=>{
                             </ToogleButton1>
                         </NavActions>
                     </NavList>
-                    <div style={{display:'inline'}}>
+                    <div style={{display:'inline-flex',alignItems:'center', float:'right'}}>
                         <ToogleButton onClick={toggleTheme}> 
                             {
                                 theme === 'light' ? <BsMoon/>:<BsSun/> 
