@@ -33,12 +33,10 @@ const IndexPage: React.FC<PageProps> = () => {
     console.log(data);
     return (
         <Layout>
-            <main>
-                <PageInfoComponent title="Projects" path="projects"/>
-                <ProjectsList
-                    projects={data.allProjectsJson.edges}
-                />
-            </main>
+            <PageInfoComponent title="Projects" path="projects"/>
+            <ProjectsList
+                projects={data.allProjectsJson.edges}
+            />
             <Footer/>
         </Layout>
     )
