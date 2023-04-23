@@ -51,13 +51,15 @@ export default function BlogPost({ data }: Props) {
                             }}
                             
                         src={photo} alt={name} />
-                        <h4 style={{display: 'block'}}>{name}</h4>
-                        <Link style={{
-                            textDecoration: 'none',
-                            color: '#007e6a'
-                        }} to={`https://twitter.com/OllieKem7`}>
-                            {name}
-                        </Link>
+                        <div>
+                            <h4 style={{display: 'block'}}>{name}</h4>
+                            <Link style={{
+                                textDecoration: 'none',
+                                color: '#007e6a'
+                            }} to={`https://twitter.com/OllieKem7`}>
+                                {name}
+                            </Link>
+                        </div>
                     </div>
                 </div>
                 <div dangerouslySetInnerHTML={{ __html: html }} />

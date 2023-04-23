@@ -68,13 +68,15 @@ export default function BlogPost({ data }: Props) {
                                 }}
                             src={article.user.profile_image} alt={article.user.name} />
                         }
-                        <h4>{article.user.name || hashNodeUser.name}</h4>
-                        <Link style={{
-                            textDecoration: 'none',
-                            color: '#007e6a'
-                        }} to={`https://twitter.com/${article.user.twitter_username||'OllieKem7'}`}>
-                            {article.user.twitter_username|| hashNodeUser.name}
-                        </Link>
+                        <div>
+                            <h4>{article.user.name || hashNodeUser.name}</h4>
+                            <Link style={{
+                                textDecoration: 'none',
+                                color: '#007e6a'
+                            }} to={`https://twitter.com/${article.user.twitter_username||'OllieKem7'}`}>
+                                {article.user.twitter_username|| hashNodeUser.name}
+                            </Link>
+                        </div>
                     </div>
                 </div>
                 {
