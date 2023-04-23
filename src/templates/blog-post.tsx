@@ -59,13 +59,23 @@ export default function BlogPost({ data }: Props) {
                         justifyContent: 'center',
                         alignItems: 'center',
                     }}>
+                        {
+                            hashNodeUser && <StaticImage
+                                style={{
+                                    width: '50px',
+                                    height: '50px',
+                                    borderRadius: '50%',
+                                }}
+                                src={hashNodeUser.photo} alt={hashNodeUser.name} />
+
+                        }
                         <StaticImage 
                             style={{
                                 width: '50px',
                                 height: '50px',
                                 borderRadius: '50%',
                             }}
-                        src={article.user.profile_image|| hashNodeUser?.photo||''} alt={article.user.name || hashNodeUser?.name|| 'Olicwe'} />
+                        src={article.user.profile_image} alt={article.user.name} />
                         <h4>{article.user.name || hashNodeUser?.name}</h4>
                         <Link style={{
                             textDecoration: 'none',
