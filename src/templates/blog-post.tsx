@@ -1,8 +1,9 @@
 import React from "react";
-import { graphql, useStaticQuery, type HeadFC, type PageProps } from "gatsby";
+import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import styled from "styled-components";
 import { Link } from "gatsby";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { StaticImage } from "gatsby-plugin-image";
 type Props = {
     data: {
         devArticles: {
@@ -10,9 +11,9 @@ type Props = {
                 id: string,
                 title: string,
                 url: string,
-                body_html: string,
+                body_markdown?: string,
                 published_at: Date,
-                tag_list: string[],
+                tag_list?: string[],
                 cover_image: string
                 user: {
                     twitter_username: string
@@ -21,12 +22,24 @@ type Props = {
                 }
             }
         }
+        hashNodePost?: {
+            id: string,
+            title: string,
+            body_html: string,
+            dateAdded: Date,
+            childMarkdownRemark: {
+                html: string
+            }
+        }
+        hashNodeUser?: {
+            name: string,
+            username: string,
+            photo: string
+        }
     }
 }
 export default function BlogPost({ data }: Props) {
-    console.log(data);
-    const { devArticles: { article } } = data;
-    console.log(article);
+    const { devArticles: { article },hashNodeUser,hashNodePost } = data;
     return (
         <Layout>
             <div>
@@ -37,7 +50,7 @@ export default function BlogPost({ data }: Props) {
                         style={{
                             color: '#ccc',
                         }}
-                    >{new Date(article.published_at).toDateString()}</h3>
+                    >{new Date(article.published_at || hashNodePost?.dateAdded).toDateString()}</h3>
                     <h1>{article.title}</h1>
                     <div style={{
                         width: '100%',
@@ -46,23 +59,30 @@ export default function BlogPost({ data }: Props) {
                         justifyContent: 'center',
                         alignItems: 'center',
                     }}>
-                        <img 
+                        <StaticImage 
                             style={{
                                 width: '50px',
                                 height: '50px',
                                 borderRadius: '50%',
                             }}
-                        src={article.user.profile_image} alt={article.user.name} />
-                        <h4>{article.user.name}</h4>
+                        src={article.user.profile_image|| hashNodeUser?.photo||''} alt={article.user.name || hashNodeUser?.name|| 'Olicwe'} />
+                        <h4>{article.user.name || hashNodeUser?.name}</h4>
                         <Link style={{
                             textDecoration: 'none',
                             color: '#007e6a'
-                        }} to={`https://twitter.com/${article.user.twitter_username}`}>
-                            {article.user.twitter_username}
+                        }} to={`https://twitter.com/${article.user.twitter_username||'OllieKem7'}`}>
+                            {article.user.twitter_username|| hashNodeUser?.name}
                         </Link>
                     </div>
                 </div>
-                <div dangerouslySetInnerHTML={{ __html: article.body_html }} />
+                {
+                    article.body_markdown && <ReactMarkdown>
+                        {article.body_markdown}
+                    </ReactMarkdown>
+                }
+                {
+                    hashNodePost && <div dangerouslySetInnerHTML={{ __html: hashNodePost.childMarkdownRemark.html }} />
+                }
             </div>
         </Layout>
     )
@@ -75,7 +95,7 @@ export const query = graphql`
                 id
                 title
                 url
-                body_html
+                body_markdown
                 published_at
                 tag_list
                 social_image
@@ -85,6 +105,18 @@ export const query = graphql`
                     name
                 }
             }
+        }
+        hashNodePost(id: {eq: $id}) {
+            slug
+            title
+            childMarkdownRemark {
+                html
+            }
+        }
+        hashNodeUser {
+            name
+            username
+            photo
         }
     }
 `;

@@ -83,7 +83,7 @@ export default function Footer({theme}: Props){
             </div>
             <div style={footerSection}>
                 <p>
-                    Oliver Kipkemei | Have a good {day}
+                    &copy; 2023 Oliver Kipkemei | Have a good {day}
                 </p>
             </div>
         </footer>
