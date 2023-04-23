@@ -45,7 +45,7 @@ export const createPages: GatsbyNode['createPages']=async ({graphql, actions}) =
             allHashNodePost {
                 nodes {
                     id
-                    title
+                    slug
                 }
             }
         }
@@ -57,7 +57,7 @@ export const createPages: GatsbyNode['createPages']=async ({graphql, actions}) =
     if (!result.data) {
         throw new Error('No data')
     }
-    result?.data.allHashNodePost.nodes.forEach(({id,slug}:HashNodeArticle) => {
+    result?.data.allHashNodePost?.nodes.forEach(({id,slug}:HashNodeArticle) => {
         createPage({
             path: `/blogs/${slug}`,
             component: path.resolve(`./src/templates/blog-post.tsx`),
