@@ -23,7 +23,7 @@ type Props = {
     }
 }
 export default function BlogPost({ data }: Props) {
-    const { hashNodePost: { body_html, childMarkdownRemark:{html},dateAdded, title }, hashNodeUser:{name,photo,username} } = data;
+    const { hashNodePost: { childMarkdownRemark:{html},dateAdded, title }, hashNodeUser:{name,photo,username} } = data;
     return (
         <Layout>
             <div>
@@ -34,7 +34,7 @@ export default function BlogPost({ data }: Props) {
                         style={{
                             color: '#ccc',
                         }}
-                    >{new Date(dateAdded).toDateString()}</h3>
+                    >{new Date(dateAdded).toDateString().toUpperCase()}</h3>
                     <h1>{title}</h1>
                     <div style={{
                         width: '100%',
@@ -43,7 +43,7 @@ export default function BlogPost({ data }: Props) {
                         justifyContent: 'center',
                         alignItems: 'center',
                     }}>
-                        <StaticImage
+                        <img
                             style={{
                                 width: '50px',
                                 height: '50px',
@@ -51,11 +51,11 @@ export default function BlogPost({ data }: Props) {
                             }}
                             
                         src={photo} alt={name} />
-                        <h4>{username}</h4>
+                        <h4 style={{display: 'block'}}>{name}</h4>
                         <Link style={{
                             textDecoration: 'none',
                             color: '#007e6a'
-                        }} to={`https://twitter.com/OllieKem`}>
+                        }} to={`https://twitter.com/OllieKem7`}>
                             {name}
                         </Link>
                     </div>

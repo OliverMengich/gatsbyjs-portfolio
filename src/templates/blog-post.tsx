@@ -60,15 +60,6 @@ export default function BlogPost({ data }: Props) {
                         alignItems: 'center',
                     }}>
                         {
-                            hashNodeUser && <img
-                                style={{
-                                    width: '50px',
-                                    height: '50px',
-                                    borderRadius: '50%',
-                                }}
-                                src={hashNodeUser?.photo} alt={hashNodeUser?.name} />
-                        }
-                        {
                             article && <img 
                                 style={{
                                     width: '50px',
