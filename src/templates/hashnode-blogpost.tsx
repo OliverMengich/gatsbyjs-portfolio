@@ -70,6 +70,7 @@ export const query = graphql`
         hashNodePost(id: {eq: $id}) {
             slug
             title
+            dateAdded
             childMarkdownRemark {
                 html
             }
