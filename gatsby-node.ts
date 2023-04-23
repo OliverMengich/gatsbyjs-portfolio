@@ -6,15 +6,25 @@ type DevArticle = {
         slug: string;
     }
 };
-
+type HashNodeArticle = {
+    id: string;
+    slug: string;
+};
 type DevArticles = {
     allDevArticles: {
         edges: {
             node: DevArticle;
         }[];
     };
+    allHashNodePost: {
+        nodes: HashNodeArticle[];
+    };
 };
 type Res = {
+    data?: DevArticles;
+    error?: any;
+}
+type Res1 = {
     data?: DevArticles;
     error?: any;
 }
@@ -32,6 +42,12 @@ export const createPages: GatsbyNode['createPages']=async ({graphql, actions}) =
                     }
                 }
             }
+            allHashNodePost {
+                nodes {
+                    id
+                    title
+                }
+            }
         }
     `);
     result as Res;
@@ -41,11 +57,19 @@ export const createPages: GatsbyNode['createPages']=async ({graphql, actions}) =
     if (!result.data) {
         throw new Error('No data')
     }
-    console.log(result);
+    result?.data.allHashNodePost.nodes.forEach(({id,slug}:HashNodeArticle) => {
+        createPage({
+            path: `/blogs/${slug}`,
+            component: path.resolve(`./src/templates/blog-post.tsx`),
+            context: {
+                id: id.toString(),
+            }
+        })
+    })
     result?.data.allDevArticles.edges.forEach(({node}:{node:DevArticle}) => {
         createPage({
             path: `/blogs/${node.article.slug}`,
-            component: path.resolve(`./src/templates/blog-post.tsx`),
+            component: path.resolve(`./src/templates/hahnode-blogpost.tsx`),
             context: {
                 id: node.article.id.toString(),
             }
