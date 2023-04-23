@@ -92,7 +92,7 @@ export default function BlogPost({ data }: Props) {
                     </ReactMarkdown>
                 }
                 {
-                    hashNodePost && <div dangerouslySetInnerHTML={{ __html: hashNodePost.childMarkdownRemark.html }} />
+                    hashNodePost && <div dangerouslySetInnerHTML={{ __html: hashNodePost?.childMarkdownRemark?.html }} />
                 }
             </div>
         </Layout>
