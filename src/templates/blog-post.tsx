@@ -60,16 +60,16 @@ export default function BlogPost({ data }: Props) {
                         alignItems: 'center',
                     }}>
                         {
-                            hashNodeUser && <StaticImage
+                            hashNodeUser && <img
                                 style={{
                                     width: '50px',
                                     height: '50px',
                                     borderRadius: '50%',
                                 }}
-                                src={hashNodeUser.photo} alt={hashNodeUser.name} />
+                                src={hashNodeUser?.photo} alt={hashNodeUser?.name} />
                         }
                         {
-                            article && <StaticImage 
+                            article && <img 
                                 style={{
                                     width: '50px',
                                     height: '50px',
