@@ -69,7 +69,7 @@ export const createPages: GatsbyNode['createPages']=async ({graphql, actions}) =
     result?.data.allDevArticles.edges.forEach(({node}:{node:DevArticle}) => {
         createPage({
             path: `/blogs/${node.article.slug}`,
-            component: path.resolve(`./src/templates/hahnode-blogpost.tsx`),
+            component: path.resolve(`./src/templates/blog-post.tsx`),
             context: {
                 id: node.article.id.toString(),
             }
