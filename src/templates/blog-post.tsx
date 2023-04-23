@@ -22,7 +22,7 @@ type Props = {
                 }
             }
         }
-        hashNodePost?: {
+        hashNodePost: {
             id: string,
             title: string,
             body_html: string,
@@ -31,7 +31,7 @@ type Props = {
                 html: string
             }
         }
-        hashNodeUser?: {
+        hashNodeUser: {
             name: string,
             username: string,
             photo: string
@@ -67,21 +67,22 @@ export default function BlogPost({ data }: Props) {
                                     borderRadius: '50%',
                                 }}
                                 src={hashNodeUser.photo} alt={hashNodeUser.name} />
-
                         }
-                        <StaticImage 
-                            style={{
-                                width: '50px',
-                                height: '50px',
-                                borderRadius: '50%',
-                            }}
-                        src={article.user.profile_image} alt={article.user.name} />
-                        <h4>{article.user.name || hashNodeUser?.name}</h4>
+                        {
+                            article && <StaticImage 
+                                style={{
+                                    width: '50px',
+                                    height: '50px',
+                                    borderRadius: '50%',
+                                }}
+                            src={article.user.profile_image} alt={article.user.name} />
+                        }
+                        <h4>{article.user.name || hashNodeUser.name}</h4>
                         <Link style={{
                             textDecoration: 'none',
                             color: '#007e6a'
                         }} to={`https://twitter.com/${article.user.twitter_username||'OllieKem7'}`}>
-                            {article.user.twitter_username|| hashNodeUser?.name}
+                            {article.user.twitter_username|| hashNodeUser.name}
                         </Link>
                     </div>
                 </div>
