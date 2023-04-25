@@ -111,7 +111,7 @@ const AboutMeAside = styled.aside`
     }
 `;
 export default function AboutMe({theme}: Props){
-    var descriptions = ['Backend Developer', 'Frontend Developer', 'Fullstack Developer', 'Web3 Developer',"DevOps Entusiast"];
+    var descriptions = ['Technical Blogger','Backend Developer', 'Frontend Developer', 'Fullstack Developer', 'Web3 Developer',"DevOps Entusiast"];
     const [description, setDescription] = React.useState<string>(descriptions[0]);
     const animationIterationFunc = () => {
         var index = descriptions.indexOf(description);

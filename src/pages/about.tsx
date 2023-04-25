@@ -177,9 +177,9 @@ const AboutPage: React.FC<PageProps> = () => {
                             listStyle: 'none',
                             margin: '0 10px',
                         }}>
-                            <li>(254) 741954425</li>
-                            <li>(254) 783891197</li>
-                            <li>oliverkemei2000@gmail.com</li>
+                            <li> > (254) 741954425</li>
+                            <li> > (254) 783891197</li>
+                            <li> > oliverkemei2000@gmail.com</li>
                         </ul>
                     </Description>
                     <div>
