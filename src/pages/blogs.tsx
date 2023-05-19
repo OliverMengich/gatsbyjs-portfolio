@@ -5,6 +5,7 @@ import PageInfoComponent from "../components/PageInfo/PageInfo.component"
 import Footer from "../components/Footer/Footer.component";
 import styled from "styled-components";
 import { Link } from "gatsby";
+import TagListComponent from "../components/TagList.component";
 const BlogPost = styled.div`
     display: flex;
     flex-direction: column;
@@ -117,35 +118,61 @@ const IndexPage: React.FC<PageProps> = (data) => {
     console.log(graphQLData);
     return (
         <Layout>
-            {/* <main> */}
-                <PageInfoComponent title="Blogs" path="blogs"/>
-                <BlogPost>
-                    {graphQLData.allDevArticles.nodes.map(({article}:Props) => {
+            <PageInfoComponent title="Blogs" path="blogs"/>
+            <BlogPost>
+                {graphQLData.allDevArticles.nodes.map(({article}:Props) => {
+                    
+                    return (
+                        <BlogElement style={{ display:'flex',width:'100%',justifyContent:'space-between',borderBottom:'1px solid #ccc', }} key={article.id}>
+                            <h3 
+                            style={{
+                                margin: "2vw 0"
+                            }}
+                            >{article.published_at.toLocaleUpperCase()}</h3>
+                            <BlogContent>
+                                <TagListComponent tags={article.tag_list}/>
+                                <Link style={{margin:'0', color:'inherit'}} to={`/blogs/${article.slug}`}>
+                                    <h1 style={titleHead}>{article.title}</h1>
+                                </Link>
+                                <p>{article.description}</p>
+                                <Link style={{
+                                    display: 'inline-block',
+                                    textTransform: 'uppercase',
+                                    padding: '0.5rem',
+                                    fontWeight: 700,
+                                    color: '#007e6a',
+                                    fontSize: '1.2rem',
+                                    textDecoration: 'none',
+                                    }} to={`${article.url}`}>
+                                    Learn More &rarr;
+                                </Link>
+                            </BlogContent>
+                        </BlogElement>
+                    )
+                })}
+                {
+                    graphQLData.allHashNodePost.nodes.map(({slug, title, brief, id, dateAdded}:Props) => {
                         return (
-                            <BlogElement style={{ display:'flex',width:'100%',justifyContent:'space-between',borderBottom:'1px solid #ccc', }} key={article.id}>
-                                <h3 
+                            <BlogElement style={{ display:'flex',width:'100%',justifyContent:'space-between',borderBottom:'1px solid #ccc', }} key={id}>
+                                <h3
                                 style={{
                                     margin: "2vw 0"
                                 }}
-                                >{article.published_at.toLocaleUpperCase()}</h3>
+                                >{new Date(dateAdded).toDateString().toUpperCase()}</h3>
                                 <BlogContent>
-                                    {
-                                        article.tag_list.split(',').map((tag: string) => {
-                                            return (
-                                                <h4 style={{
-                                                    display: 'inline-block',
-                                                    textTransform: 'uppercase',
-                                                    padding: '0.5rem',
-                                                    fontSize: 'calc(10px + 0.5vw)',
-                                                    fontWeight: 700,
-                                                    color: '#007e6a'}} key={tag}>{tag}</h4>
-                                            )
-                                        })
-                                    }
-                                    <Link style={{margin:'0', color:'inherit'}} to={`/blogs/${article.slug}`}>
-                                        <h1 style={titleHead}>{article.title}</h1>
+                                    <Link style={{margin:'0', color:'inherit'}} to={`/blogs/${slug}`}>
+                                        <h1
+
+                                            style={{
+                                                fontSize: 'calc(20px + 1vw)',
+                                                fontWeight: 700,
+                                                margin: 0,
+                                                color: 'inherit',
+                                                marginBottom: '1rem',
+                                            }}
+                                        >{title}</h1>
                                     </Link>
-                                    <p>{article.description}</p>
+                                    <p>{brief}</p>
                                     <Link style={{
                                         display: 'inline-block',
                                         textTransform: 'uppercase',
@@ -154,55 +181,16 @@ const IndexPage: React.FC<PageProps> = (data) => {
                                         color: '#007e6a',
                                         fontSize: '1.2rem',
                                         textDecoration: 'none',
-                                        }} to={`${article.url}`}>
+                                        }} to={`/blogs/${slug}`}>
                                         Learn More &rarr;
                                     </Link>
                                 </BlogContent>
                             </BlogElement>
                         )
-                    })}
-                    {
-                        graphQLData.allHashNodePost.nodes.map(({slug, title, brief, id, dateAdded}:Props) => {
-                            return (
-                                <BlogElement style={{ display:'flex',width:'100%',justifyContent:'space-between',borderBottom:'1px solid #ccc', }} key={id}>
-                                    <h3
-                                    style={{
-                                        margin: "2vw 0"
-                                    }}
-                                    >{new Date(dateAdded).toDateString().toUpperCase()}</h3>
-                                    <BlogContent>
-                                        <Link style={{margin:'0', color:'inherit'}} to={`/blogs/${slug}`}>
-                                            <h1
-
-                                                style={{
-                                                    fontSize: 'calc(20px + 1vw)',
-                                                    fontWeight: 700,
-                                                    margin: 0,
-                                                    color: 'inherit',
-                                                    marginBottom: '1rem',
-                                                }}
-                                            >{title}</h1>
-                                        </Link>
-                                        <p>{brief}</p>
-                                        <Link style={{
-                                            display: 'inline-block',
-                                            textTransform: 'uppercase',
-                                            padding: '0.5rem',
-                                            fontWeight: 700,
-                                            color: '#007e6a',
-                                            fontSize: '1.2rem',
-                                            textDecoration: 'none',
-                                            }} to={`/blogs/${slug}`}>
-                                            Learn More &rarr;
-                                        </Link>
-                                    </BlogContent>
-                                </BlogElement>
-                            )
-                        })
-                    }
-                </BlogPost>
-                <Footer/>
-            {/* </main> */}
+                    })
+                }
+            </BlogPost>
+            <Footer/>
         </Layout>
     )
 };

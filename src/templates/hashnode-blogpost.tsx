@@ -1,9 +1,7 @@
 import React from "react";
-import { graphql, useStaticQuery, type HeadFC, type PageProps } from "gatsby";
+import { graphql, type HeadFC, type PageProps } from "gatsby";
 import Layout from "../components/layout";
 import { Link } from "gatsby";
-import { StaticImage } from "gatsby-plugin-image";
-import ReactMarkdown from "react-markdown";
 type Props = {
     data: {
         hashNodePost: {
@@ -26,43 +24,24 @@ export default function BlogPost({ data }: Props) {
     const { hashNodePost: { childMarkdownRemark:{html},dateAdded, title }, hashNodeUser:{name,photo,username} } = data;
     return (
         <Layout>
-            <div>
-                <div style={{
-                    borderBottom: '1px solid #ccc',
-                }}>
-                    <h3
-                        style={{
-                            color: '#ccc',
-                        }}
-                    >{new Date(dateAdded).toDateString().toUpperCase()}</h3>
+            <div style={{display:'flex',alignItems:'center',justifyContent: 'center', width: '100%', flexWrap: 'wrap'}}>
+                <div style={{borderBottom: '1px solid #ccc',minWidth: '500px'}}>
+                    <h3 style={{color: '#ccc'}}>{new Date(dateAdded).toDateString().toUpperCase()}</h3>
                     <h1>{title}</h1>
-                    <div style={{
-                        width: '100%',
-                        textAlign: 'center',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                    }}>
-                        <img
-                            style={{
-                                width: '50px',
-                                height: '50px',
-                                borderRadius: '50%',
-                            }}
-                            
-                        src={photo} alt={name} />
+                    <div style={{width: '100%', textAlign: 'center', display: 'flex',justifyContent: 'center',alignItems: 'center',}}>
+                        <img style={{width: '50px',height: '50px', borderRadius: '50%',}}src={photo} alt={name} />
                         <div>
                             <h4 style={{display: 'block'}}>{name}</h4>
                             <Link style={{
                                 textDecoration: 'none',
                                 color: '#007e6a'
                             }} to={`https://twitter.com/OllieKem7`}>
-                                {name}
+                                OllieKem7
                             </Link>
                         </div>
                     </div>
                 </div>
-                <div dangerouslySetInnerHTML={{ __html: html }} />
+                <div style={{width: '100%',minWidth: '500px'}} dangerouslySetInnerHTML={{ __html: html }} />
             </div>
         </Layout>
     )

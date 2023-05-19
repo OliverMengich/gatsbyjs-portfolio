@@ -5,6 +5,7 @@ import AboutMe from "../components/AboutMe/AboutMe.component";
 import Footer from "../components/Footer/Footer.component";
 
 const IndexPage: React.FC<PageProps> = () => {
+    
     return (
         <Layout>
             <AboutMe imageUrl=""/>

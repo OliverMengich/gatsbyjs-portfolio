@@ -3,7 +3,8 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import { Link } from "gatsby";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { StaticImage } from "gatsby-plugin-image";
+import remarkGfm from "remark-gfm";
+import TagListComponent from "../components/TagList.component";
 type Props = {
     data: {
         devArticles: {
@@ -13,8 +14,8 @@ type Props = {
                 url: string,
                 body_markdown?: string,
                 published_at: Date,
-                tag_list?: string[],
-                cover_image: string
+                tag_list: string,
+                cover_image: string,
                 user: {
                     twitter_username: string
                     profile_image: string
@@ -42,31 +43,15 @@ export default function BlogPost({ data }: Props) {
     const { devArticles: { article },hashNodeUser,hashNodePost } = data;
     return (
         <Layout>
-            <div>
-                <div style={{
-                    borderBottom: '1px solid #ccc',
-                }}>
-                    <h3
-                        style={{
-                            color: '#ccc',
-                        }}
-                    >{new Date(article.published_at || hashNodePost?.dateAdded).toDateString()}</h3>
-                    <h1>{article.title}</h1>
-                    <div style={{
-                        width: '100%',
-                        textAlign: 'center',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                    }}>
+            <div style={{
+                width:'100%'
+            }}>
+                <h1>{article.title}</h1>
+                <h3 style={{color: '#ccc'}}>{new Date(article.published_at || hashNodePost?.dateAdded).toDateString()}</h3>
+                <div style={{borderBottom: '1px solid #ccc',}}>
+                    <div style={{width: '100%',textAlign: 'center',display: 'flex',justifyContent: 'center',alignItems: 'center',}}>
                         {
-                            article && <img 
-                                style={{
-                                    width: '50px',
-                                    height: '50px',
-                                    borderRadius: '50%',
-                                }}
-                            src={article.user.profile_image} alt={article.user.name} />
+                            article && <img style={{ width: '50px', height: '50px',borderRadius: '50%',}}src={article.user.profile_image} alt={article.user.name} />
                         }
                         <div>
                             <h4>{article.user.name || hashNodeUser.name}</h4>
@@ -78,14 +63,24 @@ export default function BlogPost({ data }: Props) {
                             </Link>
                         </div>
                     </div>
+                    <h3 style={{color: '#ccc'}}>TAGS</h3>
+                    <TagListComponent tags={article.tag_list} />
+                    <Link style={{
+                        display: 'inline-block',
+                        textTransform: 'uppercase',
+                        padding: '0.5rem',
+                        fontWeight: 700,
+                        color: '#007e6a',
+                        fontSize: '1.2rem',
+                        textDecoration: 'none',
+                        }} to={`/blogs`}>
+                        Back To Blog &rarr;
+                    </Link>
                 </div>
                 {
-                    article.body_markdown && <ReactMarkdown>
+                    article.body_markdown && <ReactMarkdown rehypePlugins={[remarkGfm]}>
                         {article.body_markdown}
                     </ReactMarkdown>
-                }
-                {
-                    hashNodePost && <div dangerouslySetInnerHTML={{ __html: hashNodePost?.childMarkdownRemark?.html }} />
                 }
             </div>
         </Layout>
@@ -99,6 +94,7 @@ export const query = graphql`
                 id
                 title
                 url
+                tags
                 body_markdown
                 published_at
                 tag_list

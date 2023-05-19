@@ -78,6 +78,7 @@ const List = styled.li`
     margin: 10px;
     @media screen and (max-width: 768px){
         border-bottom: 1px solid #fff;
+        margin: 5px 0;
     }
 `;
 const Button = styled.button`
@@ -175,9 +176,9 @@ const Layout =({children}: PageData )=>{
                     <Logo>
                         Oliver Kipkemei
                     </Logo>
-                    <NavList 
-                        style={ toogle?{ display: 'none'}:{ display: 'inherit'} }
-                        >
+                    <NavList style={ toogle?{ display: 'none',
+                    backgroundColor: theme==='light'?'#f5f5f5':'#01181d',
+                }:{ display: 'inherit'}}>
                         <List >
                             <Link href="/">Home</Link>
                         </List>
@@ -194,7 +195,7 @@ const Layout =({children}: PageData )=>{
                             <Link href="/contact">Contact</Link>
                         </List>
                         <NavActions style={{position:'relative'}}>
-                            <Button>Explore</Button>
+                               
                             <ToogleButton1 onClick={toggleTheme}> 
                                 {
                                     theme === 'light' ?  <BsMoon/>:<BsSun/>

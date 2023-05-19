@@ -111,7 +111,7 @@ const AboutPage: React.FC<PageProps> = () => {
         },
         {
             title: 'Frameworks and Database:  ',
-            skills: ['React','Next.js', 'Node.js', 'Express.js', 'ChakraUI','MySQL, MongoDB and PostgreSQL databases']
+            skills: ['React','Next.js', 'Node.js','React Native', 'Express.js', 'ChakraUI','MySQL, MongoDB and PostgreSQL databases']
         },
         {
             title: 'Tools and Skills:  ',
@@ -177,9 +177,9 @@ const AboutPage: React.FC<PageProps> = () => {
                             listStyle: 'none',
                             margin: '0 10px',
                         }}>
-                            <li> > (254) 741954425</li>
-                            <li> > (254) 783891197</li>
-                            <li> > oliverkemei2000@gmail.com</li>
+                            <li> &gt; (254) 741954425</li>
+                            <li> &gt; (254) 783891197</li>
+                            <li> &gt; oliverkemei2000@gmail.com</li>
                         </ul>
                     </Description>
                     <div>
@@ -195,16 +195,33 @@ const AboutPage: React.FC<PageProps> = () => {
                 <div>
                     <Logo>Work Experience</Logo>
                     <Description>
+                        <h2>Mobile App Developer</h2>
+                        <DateInfo>2023 - Ongoing</DateInfo>
+                        <h4>WalgoTech Solutions</h4>
+                        <ul>
+                            <li>
+                                Developing Mobile Application for WalgoTech Solutions using React Native,
+                            </li>
+                            <li>
+                                Working with a team to deliver solutions to clients.
+                            </li>
+                        </ul>
+                    </Description>
+                    <Description>
                         <h2>IOT Developer Intern</h2>
                         <DateInfo>2023- Ongoing</DateInfo>
                         <h4>WaziUp</h4>
-                        <p>
-                            Developing IoT solutions for the WaziUp platform
-                            using Microcontrollers, and IoT sensors. And a web
-                            application for the platform using React and
-                            Typescript.
-                        </p>
+                        <ul>
+                            <li>
+                                Developing IoT solutions for the WaziUp platform  using Microcontrollers, and IoT sensors. 
+                            </li>
+                            <li>
+                                Developing a web application for the platform using React and
+                                Typescript.
+                            </li>
+                        </ul>
                     </Description>
+                    
                     <Description>
                         <h2>Web Developer</h2>
                         <DateInfo>10/2021-02/2022</DateInfo>
