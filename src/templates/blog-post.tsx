@@ -52,7 +52,7 @@ const BlogMarkdown = styled.pre`
     border-radius: 5px;
     font-size: 1.1em;
     font-family: monospace;
-    color: #000;
+    color: inherit;
     margin: 0 5px;
     @media screen and (max-width: 768px) {
         overflow-x: hidden;
@@ -69,7 +69,7 @@ const BlogMarkdown = styled.pre`
         border-radius: 5px;
         font-size: 10px;
         font-family: monospace;
-        color: #000;
+        color: inherit;
         margin: 0 5px;
         @media (max-width: 768px) {
             font-size: 10px;
@@ -83,10 +83,10 @@ const BlogMarkdown = styled.pre`
             margin: 0;
         }
     }
-    p{
+    p   {
         padding: 10px;
         font-family: monospace;
-        color: #000;
+        color: inherit;
         margin: 0 5px;
         width: 100%;
         code{
@@ -95,7 +95,7 @@ const BlogMarkdown = styled.pre`
             border-radius: 5px;
             font-family: monospace;
             color: inherit;
-            margin: 0;
+            margin: 3px 0;
         }
     }
 `;
@@ -130,7 +130,7 @@ export default function BlogPost({ data }: Props) {
                             </Link>
                         </div>
                     </div>
-                    <div style={{ boxSizing: 'border-box', width: '100%',textAlign: 'center',display: 'flex',justifyContent: 'center',alignItems: 'center',}}>
+                    <div style={{ boxSizing: 'border-box', width: '100%',textAlign: 'center',}}>
                         <h3 style={{color: '#ccc', margin: 0,padding: 0}}>TAGS</h3>
                         <TagListComponent tags={article.tag_list} />
                         <Link style={{

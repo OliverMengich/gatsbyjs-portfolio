@@ -15,7 +15,7 @@ const BlogMarkdown = styled.pre`
     border-radius: 5px;
     font-size: 1.1em;
     font-family: monospace;
-    color: #000;
+    color: inherit;
     margin: 0 5px;
     @media screen and (max-width: 768px) {
         overflow-x: hidden;
