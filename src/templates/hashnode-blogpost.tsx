@@ -32,7 +32,7 @@ const BlogMarkdown = styled.pre`
         border-radius: 5px;
         font-size: 10px;
         font-family: monospace;
-        color: #000;
+        color: inherit;
         margin: 0 5px;
         @media (max-width: 768px) {
             font-size: 10px;
@@ -49,7 +49,7 @@ const BlogMarkdown = styled.pre`
     p{
         padding: 10px;
         font-family: monospace;
-        color: #000;
+        color: inherit;
         margin: 0 5px;
         width: 100%;
         code{
@@ -58,7 +58,7 @@ const BlogMarkdown = styled.pre`
             border-radius: 5px;
             font-family: monospace;
             color: inherit;
-            margin: 0;
+            margin: 5px 1px;
         }
     }
 `;

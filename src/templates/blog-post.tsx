@@ -95,7 +95,7 @@ const BlogMarkdown = styled.pre`
             border-radius: 5px;
             font-family: monospace;
             color: inherit;
-            margin: 3px 0;
+            margin: 5px 1px;
         }
     }
 `;
@@ -134,7 +134,7 @@ export default function BlogPost({ data }: Props) {
                         <h3 style={{color: '#ccc', margin: 0,padding: 0}}>TAGS</h3>
                         <TagListComponent tags={article.tag_list} />
                         <Link style={{
-                            display: 'inline-block',
+                            display: 'block',
                             color: '#007e6a',
                             fontSize: 'calc(10px + 0.5vw)',
                             textDecoration: 'none',
