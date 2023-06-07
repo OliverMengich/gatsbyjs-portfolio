@@ -12,7 +12,7 @@ const config: GatsbyConfig = {
   plugins: ["gatsby-plugin-styled-components", "gatsby-plugin-image", {
     resolve: 'gatsby-plugin-manifest',
     options: {
-      "icon": "src/images/me.jpg"
+      "icon": "src/images/oliverimg.png"
     }
   }, "gatsby-plugin-mdx", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
     resolve: 'gatsby-source-filesystem',

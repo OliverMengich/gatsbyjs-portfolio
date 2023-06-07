@@ -294,7 +294,7 @@ export default function AboutMe({theme}: Props){
                     </p>
                 </AboutMeAside>
                 <AboutMeImage>
-                    <StaticImage style={{borderRadius:'50%', height:'auto', width: '100%'}} src="../../images/second_img1.png" alt="me" />
+                    <StaticImage style={{borderRadius:'50%', height:'auto', width: '100%'}} src="../../images/oliverimg.png" alt="me" />
                 </AboutMeImage>
             </AboutMeInfo1>
             <h1 style={{textAlign: 'center'}}>Featured Blogs</h1>

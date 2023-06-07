@@ -137,7 +137,7 @@ const AboutPage: React.FC<PageProps> = () => {
         <Layout>
             <AboutMeInfo>
                 <aside>
-                    <StaticImage style={{borderRadius: '50%', minWidth:'300px'}} height={400} src="../images/second_img1.png" alt="me" />
+                    <StaticImage style={{borderRadius: '50%', minWidth:'300px'}} height={400} src="../images/oliverimg.png" alt="me" />
                 </aside>
                 <aside style={{maxWidth: '900px',textAlign: 'center' }}>
                     <h3 style={{textAlign: 'center'}}>SOFTWARE DEVELOPER</h3>
