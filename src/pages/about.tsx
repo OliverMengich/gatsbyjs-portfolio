@@ -104,7 +104,7 @@ const ResumeButton = styled.a`
     border: 1px solid #000;
     font-size: 1rem;
     font-weight: bold;
-    margin-top: 1rem;
+    margin: 1rem;
     transition: all .2s ease-in-out;
     cursor: pointer;
     text-align: center;
@@ -121,7 +121,7 @@ const AboutPage: React.FC<PageProps> = () => {
         },
         {
             title: 'Frameworks and Database:  ',
-            skills: ['React','Next.js', 'Node.js','React Native', 'Express.js', 'ChakraUI','MySQL, MongoDB and PostgreSQL databases']
+            skills: ['React','Next.js','MaterialUI','TailwindCSS', 'Node.js','React Native', 'Express.js', 'ChakraUI','MySQL, MongoDB and PostgreSQL databases', 'Formik','Yup']
         },
         {
             title: 'Tools and Skills:  ',
@@ -129,7 +129,7 @@ const AboutPage: React.FC<PageProps> = () => {
         },
         {
             title:'Cyber Security:  ',
-            skills:[' Linux', ' Windows',' Networking',' Active Directory','Kerberos']
+            skills:['Linux', ' Windows',' Networking',' Active Directory','Kerberos']
         }
     ]
     let theme= 'dark';
@@ -148,7 +148,7 @@ const AboutPage: React.FC<PageProps> = () => {
                         <SocialMediaA href="mailto:oliverkemei2000@gmail.com"> <FaEnvelope/> </SocialMediaA>
                         <SocialMediaA href="https://oliverkipkemei.me"> <FaGlobeAsia/> </SocialMediaA>
                     </SocialMedia> 
-                    <ResumeButton >
+                    <ResumeButton href="https://drive.google.com/file/d/1Ls4PxRMRMurlU06-SHx_DAClZ-fVUSfl/view?usp=sharing" download={true}>
                         DOWNLOAD RESUME
                     </ResumeButton>
                     <p style={{textAlign:'initial'}}>
@@ -211,10 +211,13 @@ const AboutPage: React.FC<PageProps> = () => {
                         <h4>WalgoTech Solutions</h4>
                         <ul>
                             <li>
-                                Developing Mobile Application for WalgoTech Solutions using React Native,
+                                &gt; Developing Mobile Application for WalgoTech Solutions using React Native,
                             </li>
                             <li>
-                                Working with a team to deliver solutions to clients.
+                                &gt;Working with a team to deliver solutions to clients.
+                            </li>
+                            <li>
+                                &gt;Techstack used include: React Native, React, Typescript, Javascript.
                             </li>
                         </ul>
                     </Description>
@@ -222,13 +225,16 @@ const AboutPage: React.FC<PageProps> = () => {
                         <h2>IOT Developer Intern</h2>
                         <DateInfo>2023- Ongoing</DateInfo>
                         <h4>WaziUp</h4>
-                        <ul>
+                        <ul style={{listStyle: 'none'}}>
                             <li>
-                                Developing IoT solutions for the WaziUp platform  using Microcontrollers, and IoT sensors. 
+                                &gt; Developing IoT solutions for the WaziUp platform  using Microcontrollers, and IoT sensors. 
                             </li>
                             <li>
-                                Developing a web application for the platform using React and
+                                &gt; Developing a web application for the platform using React and
                                 Typescript.
+                            </li>
+                            <li>
+                                &gt; Techstack used include: React, Typescript, Node.js, Express.js, MongoDB, MySQL, Docker,  Azure, Heroku, Testing(Manual and Automated) with Cypress
                             </li>
                         </ul>
                     </Description>
@@ -238,8 +244,11 @@ const AboutPage: React.FC<PageProps> = () => {
                         <DateInfo>10/2021-02/2022</DateInfo>
                         <h4>Africa Blockchain Univeristy</h4>
                         <p>
-                            Developing a web application for the Africa Blockchain and working 
+                            &gt; Developing a web application for the Africa Blockchain and working 
                             with ABU partners
+                        </p>
+                        <p>
+                            &gt; Techstack used include: React, Typescript, Node.js, Express.js, MongoDB, Testing(Manual and Automated) with Jest.
                         </p>
                     </Description>
                 </Experience>
