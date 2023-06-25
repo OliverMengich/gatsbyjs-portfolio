@@ -15,4 +15,4 @@
   ---
   2. DevOps Enthusiast
 
-    Visit [Oliver Kipkemei] (https://gatsbyjsportfoliomain.gatsbyjs.io)
+    Visit [Oliver Kipkemei](https://oliverkipkemei.me)
