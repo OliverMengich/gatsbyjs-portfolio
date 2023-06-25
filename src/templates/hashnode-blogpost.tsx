@@ -85,7 +85,7 @@ export default function BlogPost({ data }: Props) {
     const htmlContent = marked(html);
     return (
         <Layout>
-            <div style={{display:'flex',alignItems:'center',justifyContent: 'center', width: '100%', flexWrap: 'wrap'}}>
+            <div style={{display:'flex',,justifyContent: 'center', width: '100%', flexWrap: 'wrap'}}>
                 <div style={{borderBottom: '1px solid #ccc',minWidth: '500px'}}>
                     <h3 style={{color: '#ccc'}}>{new Date(dateAdded).toDateString().toUpperCase()}</h3>
                     <h1>{title}</h1>
